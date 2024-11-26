@@ -4,9 +4,9 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const port = process.env.PORT || process.env.PUERTO
-const companyRoutes = require("./router/company.routes")
-const usersRoutes = require("./router/users.routes")
-const inscriptionRoutes = require("./router/inscription.routes")
+const companyRoutes = require("./routes/company.routes")
+const usersRoutes = require("./routes/users.routes")
+const inscriptionRoutes = require("./routes/inscription.routes")
 
 app.use(methodOverride("_method"))
 app.set("view engine","ejs")
@@ -18,9 +18,9 @@ app.use((req,res,next) => {
     //Variables Globales
 })
 
-app.use(`/api/${process.env.API_VERSION}/company`)
-app.use(`/api/${process.env.API_VERSION}/users`)
-app.use(`/api/${process.env.API_VERSION}/inscription`)
+// app.use(`/api/${process.env.API_VERSION}/company`)
+// app.use(`/api/${process.env.API_VERSION}/users`)
+// app.use(`/api/${process.env.API_VERSION}/inscription`)
 
 
 app.get("*",(req,res)=>{
