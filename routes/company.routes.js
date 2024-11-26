@@ -1,6 +1,6 @@
-const companyController = require("../controllers/company.controller")
-const express = require("express")
-const router = express.Router()
+const companyController = require("../controllers/company.controller") // Importa el controlador de company
+const express = require("express") // Importamos Express
+const router = express.Router() // Crea un enrutador para las rutas de company
 
 //GET
 
@@ -10,4 +10,4 @@ const router = express.Router()
 
 //DELETE
 
-module.exports = router
+module.exports = router // Exporta el enrutador para su uso en la aplicación principal
