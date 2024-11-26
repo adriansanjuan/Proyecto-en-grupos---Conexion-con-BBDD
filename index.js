@@ -19,9 +19,9 @@ app.use((req,res,next) => {
     //Variables Globales
 })
 
-app.use(`/api/${process.env.API_VERSION}/company`)
-app.use(`/api/${process.env.API_VERSION}/users`)
-app.use(`/api/${process.env.API_VERSION}/inscription`)
+// app.use(`/api/${process.env.API_VERSION}/company`)
+// app.use(`/api/${process.env.API_VERSION}/users`)
+// app.use(`/api/${process.env.API_VERSION}/inscription`)
 
 
 app.get("*",(req,res)=>{
