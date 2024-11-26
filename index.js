@@ -33,6 +33,8 @@ app.get("*",(req,res)=>{
     res.status(500).json({err:"No existe la ruta"})
 })
 
+// ********** INICIAR SERVIDOR **********
+
 app.listen(port, async()=>{
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API_VERSION}/company`)
     try {
@@ -53,10 +55,3 @@ app.listen(port, async()=>{
     }
 })
 
-// ********** INICIAR SERVIDOR **********
-
-
-// Arranca el servidor en el puerto configurado y muestra en consola el mensaje de éxito
-app.listen(port, () => {
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API_VERSION}/pedidos`);
-});
