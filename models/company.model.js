@@ -86,4 +86,4 @@ company.findAll = async(filter={}, result)=>{
 
 // company.findCommentById = async(id, result)
 
-module.exports = comment
+module.exports = comment    
