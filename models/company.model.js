@@ -75,6 +75,15 @@ company.createCompany = async(companyData, result) => {
     })
 }
 
-company.findAll
+company.findAll = async(filter={}, result)=>{
+    const datos = await comment.find(filter)
+    if(datos && datos.length > 0){
+        result(null, datos)
+    }else{
+        result({"error":"No hay datos"}, null)
+    }
+}
+
+company.findCommentById = async(id, result)
 
 module.exports = comment
