@@ -1,3 +1,3 @@
 const mongoose = require("mongoose")
 
-module.exports = comment
+module.exports = comment    
