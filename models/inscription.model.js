@@ -1,31 +1,35 @@
 const mongoose = require("mongoose")
 
-const mongoose = require("mongoose")
-const { type } = require("os")
-
-const inscription = new mongoose.Schema({
-    IdUser:{
-        type:Number,
-        require:true
+const inscriptionSchema = new mongoose.Schema({
+    IdInscription: {
+        _id: Number
     },
-    IdCompany:{
-        type:Number,
-        require:true
+    IdUser: {
+        type: Number, // Clave primaria del usuario
+        required: true,
     },
-    FecIni:{
-        type:Date,
-        require:true
+    IdCompany: {
+        type: String, 
+        required: true,
     },
-    FecFin:{
-        type:Date,
-        require:false
+    FecIni: {
+        type: Date, // Fecha obligatoria de inicio
+        required: true,
     },
-    Observaciones:{
-        type:String,
-        require:false
-    }
+    FecFin: {
+        type: Date, // Fecha opcional de fin
+        required: false,
+    },
+    Observaciones: {
+        type: String, // Campo de texto libre
+        required: false,
+    },
 })
 
-module.exports = inscription
+//1:N
 
-module.exports = comment
+
+// Crear el modelo a partir del esquema
+const Inscription = mongoose.model("Inscription", inscriptionSchema)
+
+module.exports = Inscription
