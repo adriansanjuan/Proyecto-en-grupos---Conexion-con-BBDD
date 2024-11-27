@@ -2,6 +2,7 @@ const dbConn = require("../utils/mysql.config")
 const mysql = require("mysql")
 
 let user = function(empleado){
+    //id autoincremental
     this.nif = empleado.nif
     this.username = empleado.username
     this.password = empleado.password
