@@ -1,2 +1,2 @@
 require("dotenv").config()
-const companyModel = require("")
+const userModel = require("../models/users.model")
