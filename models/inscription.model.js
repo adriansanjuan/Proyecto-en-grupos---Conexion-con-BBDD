@@ -6,9 +6,11 @@ const { type } = require("os")
 const inscription = new mongoose.Schema({
     IdUser:{
         type:Number,
+        require:true
     },
     IdCompany:{
         type:Number,
+        require:true
     },
     FecIni:{
         type:Date,
@@ -16,9 +18,11 @@ const inscription = new mongoose.Schema({
     },
     FecFin:{
         type:Date,
+        require:false
     },
     Observaciones:{
-        type:text
+        type:String,
+        require:false
     }
 })
 
