@@ -76,7 +76,7 @@ company.createCompany = async(companyData, result) => {
 }
 
 company.findAll = async(filter={}, result)=>{
-    const datos = await comment.find(filter)
+    const datos = await company.find(filter)
     if(datos && datos.length > 0){
         result(null, datos)
     }else{
@@ -86,4 +86,4 @@ company.findAll = async(filter={}, result)=>{
 
 // company.findCommentById = async(id, result)
 
-module.exports = comment    
+module.exports = company
