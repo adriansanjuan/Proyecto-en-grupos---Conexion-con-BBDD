@@ -1,4 +1,5 @@
 require("dotenv").config()
+<<<<<<< HEAD
 const inscriptionModel = require("../models/inscription.model")
 
 exports.createInscription = async(req,res)=>{
@@ -69,3 +70,9 @@ exports.deleteInscription = async(req,res)=>{
         }
     })    
 }
+=======
+
+
+
+const companyModel = require("")
+>>>>>>> PlaciDev

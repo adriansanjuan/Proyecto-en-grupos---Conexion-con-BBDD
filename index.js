@@ -20,6 +20,7 @@ app.use(express.json()) // Lo usamos para datos en formato JSON (POST)
 
 app.use((req,res,next) => { // Middleware para definir variables globales accesibles en las vistas de EJS
     //Variables Globales
+    res.locals.BaseURL = `/api/${process.env.API_VERSION}/`
 })
 
 // ********** RUTAS DEL SERVIDOR **********
