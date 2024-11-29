@@ -84,6 +84,37 @@ company.findAll = async(filter={}, result)=>{
     }
 }
 
-// company.findCommentById = async(id, result)
+company.findCompanyById = async(id, result) => {
+    //const idObj = mongoose.Types.ObjectId(id)
+    const datos = await company.findById(id)
+    //const datos = await comment.find({_id:ObjectId(id)})
+    if(datos){
+        result(null, datos)
+    }else{
+        result({"error":"No hay datos"}, null)
+    }
+}
+
+company.updateCompanyById = async(id, companyData, result) => {
+    await Comment.findByIdAndUpdate(id, commentData, {runValidators:true, new:true})
+    .then((datosResult) => {
+        result(null, datosResult)
+    })
+    .catch((err) => {
+        result(err, null)
+    })
+}
+
+company.deleteCompanyById = async(id, result) => {
+    await comment.findByIdAndDelete(id)
+    .then((datos) => {
+        result(null, datos)
+    })
+    .catch((err) => {
+        result(err, null)
+    })
+}
+
+
 
 module.exports = company
