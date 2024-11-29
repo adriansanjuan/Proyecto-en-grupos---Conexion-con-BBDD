@@ -8,7 +8,7 @@ exports.createInscription = async(req,res)=>{
             res.render("error.ejs", {err})
         }else{
             console.log(inscriptionCreated)
-            res.redirect(`/api/${process.env.API}/Inscription/`)
+            res.redirect(`/api/${process.env.API}/inscription/`)
         }
     })
 }
@@ -54,7 +54,7 @@ exports.editInscription = async(req,res) => {
             res.render("error.ejs", {err})
         }else{
             console.log(datosActualizados)
-            res.redirect(`/api/${process.env.API}/Inscription/`)
+            res.redirect(`/api/${process.env.API}/inscription/`)
         }
     })        
 }
@@ -65,7 +65,7 @@ exports.deleteInscription = async(req,res)=>{
         if(err){
             res.render("error.ejs", {err})
         }else{
-            res.redirect(`/api/${process.env.API}/Inscription/`)
+            res.redirect(`/api/${process.env.API}/inscription/`)
         }
     })    
 }
