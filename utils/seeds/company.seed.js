@@ -19,7 +19,7 @@ const ejecutar = async()=>{
             city:"",
             personInCharge:"Manolito Caramierda Sanchez",
             personInChargeID:"99999998Y",
-            tyoe:"",
+            type:"",
             family:"",
             empresa:"",
             address:"",
