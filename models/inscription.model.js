@@ -1,9 +1,6 @@
 const mongoose = require("mongoose")
 
 const inscriptionSchema = new mongoose.Schema({
-    IdInscription: {
-        _id: Number
-    },
     IdUser: {
         type: Number, // Clave primaria del usuario
         required: true,
@@ -43,7 +40,7 @@ Inscription.createInscription = async(inscriptionData, result) => {
     })
 }
 
-Inscription.findAll = async(filter={}, result)=>{
+Inscription.findAllInscription = async(filter={}, result)=>{
     const datos = await Inscription.find(filter)
     if(datos && datos.length > 0){
         result(null, datos)
