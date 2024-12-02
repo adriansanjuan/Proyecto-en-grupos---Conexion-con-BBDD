@@ -22,14 +22,15 @@ app.use(express.json()) // Lo usamos para datos en formato JSON (POST)
 
 app.use((req,res,next) => { // Middleware para definir variables globales accesibles en las vistas de EJS
     //Variables Globales
-    res.locals.BaseURL = `/api/${process.env.API_VERSION}/`
+    res.locals.BaseURL = `/api/${process.env.API}/`
+    next()
 })
 
 // ********** RUTAS DEL SERVIDOR **********
 
-// app.use(`/api/${process.env.API_VERSION}/company`) // Configura las rutas para company usando la versión especificada en el .env
-// app.use(`/api/${process.env.API_VERSION}/users`) // Configura las rutas para users usando la versión especificada en el .env
-// app.use(`/api/${process.env.API_VERSION}/inscription`) // Configura las rutas para inscription usando la versión especificada en el .env
+app.use(`/api/${process.env.API}/company`,companyRoutes) // Configura las rutas para company usando la versión especificada en el .env
+app.use(`/api/${process.env.API}/users`,usersRoutes) // Configura las rutas para users usando la versión especificada en el .env
+app.use(`/api/${process.env.API}/inscription`,inscriptionRoutes) // Configura las rutas para inscription usando la versión especificada en el .env
 
 
 app.get("*",(req,res)=>{
