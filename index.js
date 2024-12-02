@@ -8,6 +8,8 @@ const port = process.env.PORT || process.env.PUERTO // Configuración del puerto
 const companyRoutes = require("./routes/company.routes")
 const usersRoutes = require("./routes/users.routes")
 const inscriptionRoutes = require("./routes/inscription.routes")
+const mongodbConfig = require("./utils/mongodb.config")
+
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
 
