@@ -4,26 +4,22 @@ const router = express.Router() // Crea un enrutador para las rutas de inscripti
 
 //GET
 
-//Mostrar JSON del listado de comentarios
-router.get("/inscription/json",inscriptionController.findAllInscription)
-
 //Mostrar VISTA EJS index.ejs con listado de todo inscription
 router.get("/",inscriptionController.showAllInscription)
-router.get("/inscription",inscriptionController.showAllInscription)
 
 //Mostrar VISTA EJS new.ejs para crear un inscription
-router.get("/inscription/new",inscriptionController.showNewComment)
+router.get("/new",inscriptionController.showNewComment)
 
 //POST
 
-router.post("/inscription",inscriptionController.createInscription)
+router.post("/",inscriptionController.createInscription)
 
 //PATCH
 
-router.patch("/inscription/:id",inscriptionController.editInscription)
+router.patch("/:id",inscriptionController.editInscription)
 
 //DELETE
 
-router.delete("/inscription/:id",inscriptionController.deleteInscription)
+router.delete("/:id",inscriptionController.deleteInscription)
 
 module.exports = router // Exporta el enrutador para su uso en la aplicación principal
