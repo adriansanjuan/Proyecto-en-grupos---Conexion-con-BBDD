@@ -22,6 +22,11 @@ exports.findUserById = async function(req,res){
     })
 }
 
+
+exports.newUser = async function (req,res) {
+    res.render("/users/new.ejs")
+}
+
 exports.createUser = async function(req,res){
     //const {newEmployee} = req.body
     const newUser = new userModel(req.body)
