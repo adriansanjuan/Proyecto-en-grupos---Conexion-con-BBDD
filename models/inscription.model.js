@@ -2,24 +2,24 @@ const mongoose = require("mongoose")
 
 const inscriptionSchema = new mongoose.Schema({
     IdUser: {
-        type: Number, // Clave primaria del usuario
-        required: true,
+        type: Number, //tipo Number
+        required: true,//es requerido
     },
     IdCompany: {
-        type: String, 
-        required: true,
+        type: String, //tipo String
+        required: true,//es requerido
     },
     FecIni: {
         type: Date, // Fecha obligatoria de inicio
-        required: true,
+        required: true,//es requerido
     },
     FecFin: {
         type: Date, // Fecha opcional de fin
-        required: false,
+        required: false,//no es requerido
     },
     Observaciones: {
         type: String, // Campo de texto libre
-        required: false,
+        required: false,//no es requerido
     },
 })
 
