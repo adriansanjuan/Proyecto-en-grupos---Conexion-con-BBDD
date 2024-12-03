@@ -5,6 +5,7 @@ const router = express.Router() // Crea un enrutador para las rutas de users
 //GET
 router.get("/",usersController.findAllUsers)
 router.get("/:id",usersController.findUserById)
+router.get("/new",usersController.newUser)
 //POST
 router.post("/",usersController.createUser)
 //PATCH
