@@ -6,7 +6,7 @@ exports.findAllUsers = async function(req,res) {
         if(err){
             res.render("error.ejs",{err})
         }else{
-            res.render(`/users/index.ejs`, {datosUsers})
+            res.render(`users/index.ejs`, {datosUsers})
         }
     })    
 }
@@ -17,14 +17,14 @@ exports.findUserById = async function(req,res){
         if(err){
             res.render("error.ejs", {err})
         }else{
-            res.render(`/users/show.ejs`,{datosUsuario})
+            res.render(`users/show.ejs`,{datosUsuario:datosUsuario[0]})
         }
     })
 }
 
 
 exports.newUser = async function (req,res) {
-    res.render("/users/new.ejs")
+    res.render("users/new.ejs")
 }
 
 exports.createUser = async function(req,res){
@@ -39,8 +39,18 @@ exports.createUser = async function(req,res){
     })
 }
 
+exports.modifyUser = async function(req,res){
+    const id = req.params
+    await userModel.findById(id,function(err,datosUsuario){
+        if(err){
+            res.render("error.ejs", {err})
+        }else{
+            res.render(`users/edit.ejs`,{datosUsuario:datosUsuario[0]})
+        }
+    })
+}
+
 exports.updateUser = async function(req,res){
-    //const {newEmployee} = req.body
     const {id} = req.params
     const updateUser = new userModel(req.body)
     await userModel.update(id,updateUser,function(err,datosUsuarioActualizado){

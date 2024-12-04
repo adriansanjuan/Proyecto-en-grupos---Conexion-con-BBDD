@@ -27,10 +27,11 @@ user.findAll = async (result) => {
         } else {
             console.log("Conexion MySQL abierta")
             const sql = "select * from users"
-
             connection.query(sql,function(err,datos){
                 if (err) {
                     result(err,null)
+                }else{
+                    result(null,datos)
                 }
             })
 
@@ -55,16 +56,14 @@ user.findById = async (id,result) => {
             console.log("Error conectando a MySQL. Desc: " + error)
         } else {
             console.log("Conexión MySQL abierta")
-            const sql = "select * from users where id = ?"
-
-            connection.query(sql,id,function (err,datos) {
+            const sql = "select * from users where idUser = ?"
+            connection.query(sql,id,function(err,datos){
                 if (err) {
                     result(err,null)
                 } else {
                     result(null,datos)
                 }
             })
-
             connection.end((err)=>{
                 if (err) {
                     console.log("Error al desconectar de MySQL. Desc: " + err)
@@ -115,7 +114,7 @@ user.update = async (id,updateUser,result) => {
             console.log("Error conectando a MySQL. Desc: " + error)
         } else {
             console.log("Conexión MySQL abierta")
-            const sql = "update users SET ? where id = ?"
+            const sql = "update users SET ? where idUser = ?"
     
             connection.query(sql,[updateUser,id],function (err,datos) {
                 if (err) {

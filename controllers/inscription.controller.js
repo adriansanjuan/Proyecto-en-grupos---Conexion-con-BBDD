@@ -19,7 +19,7 @@ exports.showNewComment = (req,res)=>{
 
 
 exports.showAllInscription = async(req,res) => {
-    await inscriptionModel.findAllInscription(filtro,function(err,datosInscription){
+    await inscriptionModel.findAllInscription(function(err,datosInscription){
         if(err){
             console.log(err)
             res.render("error.ejs",{err:err.error})
@@ -30,7 +30,14 @@ exports.showAllInscription = async(req,res) => {
 }
 
 exports.showEditInscription = async(req, res) => {
-    res.render("inscription/edit.ejs")
+    const { id } = req.params
+    await inscriptionModel.findInscriptionById(id,function(err,inscription){
+        if(err){
+            res.render("error.ejs",{err:err.error})
+        }else{
+            res.render("inscription/edit.ejs", {inscription})
+        }
+    })  
 }
 
 exports.editInscription = async(req,res) => {
@@ -46,7 +53,7 @@ exports.editInscription = async(req,res) => {
             res.render("error.ejs", {err})
         }else{
             console.log(datosActualizados)
-            res.redirect(`/api/${process.env.API}/company/`)
+            res.redirect(`/api/${process.env.API}/inscription/`)
         }
     })        
 }

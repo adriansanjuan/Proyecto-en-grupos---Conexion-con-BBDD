@@ -6,7 +6,15 @@
     <title>Inicio Users</title>
 </head>
 <body>
+    <h1>PAGINA INICIO USERS</h1>
     <a href="new.ejs">Crear usuario</a>
-    
+    <% for( let c of datosUsers ) { %>
+        <ul>
+            <li>NIF : <%= c.nif %></li>
+            <li>Username : <%= c.username %></li>
+            <a href="<%= BaseURL %>users/<%= c.idUser %>">Show Details</a>
+        </ul>
+        <hr>
+    <% } %>
 </body>
 </html>
