@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+    <h1>Página New Inscription</h1>
+    <form action="<%= BaseURL %>inscription" method="POST">
+        <input type="text" placeholder="Prueba..." name="FecIni" required> 
+        <input type="text" placeholder="Prueba..." name="IdCompany" required>        
+        <input type="text" placeholder="Prueba..." name="IdUser" required>        
+        <br>
+        <br>
+        <br>
+        <label></label>
+        <br>
+        <br>
+        <br>
+        <button>Guardar</button>
+    </form>
+    <a href="<%= BaseURL %>inscription/edit/1">Editar inscription</a>
+</body>
+</html>

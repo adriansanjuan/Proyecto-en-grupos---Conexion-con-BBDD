@@ -40,8 +40,8 @@ Inscription.createInscription = async(inscriptionData, result) => {
     })
 }
 
-Inscription.findAllInscription = async(filter={}, result)=>{
-    const datos = await Inscription.find(filter)
+Inscription.findAllInscription = async(result)=>{
+    const datos = await Inscription.find({})
     if(datos && datos.length > 0){
         result(null, datos)
     }else{
@@ -49,10 +49,19 @@ Inscription.findAllInscription = async(filter={}, result)=>{
     }
 }
 
+Inscription.findInscriptionById = async(id, result)=>{
+    const datos = await Inscription.findById(id)
+    if(datos){
+        result(null,datos)
+    }else{
+        result({"error":"No hay datos"},null)
+    }
+}
+
 Inscription.updateInscriptionById = async(id, inscriptionData, result) => {
     await Inscription.findByIdAndUpdate(id, inscriptionData, {runValidators:true, new:true})
-    .then((datosResult) => {
-        result(null, datosResult)
+    .then((datosResultado) => {
+        result(null, datosResultado)
     })
     .catch((err) => {
         result(err, null)

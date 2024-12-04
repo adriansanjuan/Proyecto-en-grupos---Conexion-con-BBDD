@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+    <h1>Página Edit Inscription</h1>
+    <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=PATCH" method="POST">
+        <input type="text" placeholder="Prueba..." name="FecIni" value="<%= inscription.FecIni %> "required> 
+        <input type="text" placeholder="Prueba..." name="IdCompany" value="<%= inscription.IdCompany %>" required>        
+        <input type="text" placeholder="Prueba..." name="IdUser" value="<%= inscription.IdUser %>" required>        
+        <br>
+        <br>
+        <br>
+        <label></label>
+        <br>
+        <br>
+        <br>
+        <button>Guardar</button>
+    </form>
+    <a href="<%= BaseURL %>inscription/">Volver atrás</a>
+</body>
+</html>
