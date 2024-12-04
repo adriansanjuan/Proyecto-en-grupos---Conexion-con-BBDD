@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+    <h1>Página Inscription</h1>
+    <div>
+        <% for(let inscription of datosInscription) {%>
+            <div>
+                <div>
+                    <p>------------------------------</p>
+                </div>
+                <div>
+                    <p>Id del usuario: <%= inscription.IdUser %></p>
+                </div>
+                <div>
+                    <p>Id de la compañia: <%= inscription.IdCompany %></p>
+                </div>
+                <div>
+                    <p>Fecha inicio: <%= inscription.FecIni %></p>
+                </div>
+                <div>
+                    <p>Id: <%= inscription._id %></p>
+                </div>
+                <div>
+                    <p>Version <%= inscription.__v %></p>
+                </div>
+                <div>
+                    <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a>
+                </div>
+                <div>
+                    <p>------------------------------</p>
+                </div>
+            </div>
+        <% }%>
+    </div>
+    <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>
+</body>
+</html>
