@@ -3,12 +3,12 @@ const companyModel = require("../models/company.model")
 
 
 exports.findAllCompanies = async(req, res) => {
-    await companyModel.findAll(filtro, function(err, datosCompany){
+    await companyModel.findAll({}, function(err, datosCompany){
         if(err){
             console.log(err)
             res.render("error.ejs", {err:err.error})
         }else{
-            res.render("/company/index.ejs", {comentarios:datosCompany})
+            res.render("/company/index.ejs", {empresas:datosCompany})
         }
     })
 }
@@ -19,7 +19,7 @@ exports.findAllCompaniesById = async(req, res) => {
             console.log(err)
             res.render("error.ejs", {err:err.error})
         }else{
-            res.render("/company/index.ejs", {comentarios:datosCompany})
+            res.render("/company/index.ejs", {empresas:datosCompany})
         }
     })
 }
