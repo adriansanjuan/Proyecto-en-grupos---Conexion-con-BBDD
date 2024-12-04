@@ -6,6 +6,7 @@ const router = express.Router() // Crea un enrutador para las rutas de inscripti
 
 //Mostrar VISTA EJS index.ejs con listado de todo inscription
 router.get("/",inscriptionController.showAllInscription)
+<<<<<<< HEAD
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription
@@ -17,6 +18,22 @@ router.get("/edit/:id", inscriptionController.showEditInscription)
 router.patch("/:id",inscriptionController.editInscription)
 
 //DELETE
+=======
+
+//Mostrar VISTA EJS new.ejs para crear un inscription
+router.get("/new",inscriptionController.showNewComment)
+
+//POST
+
+router.post("/",inscriptionController.createInscription)
+
+//PATCH
+
+router.patch("/:id",inscriptionController.editInscription)
+
+//DELETE
+
+>>>>>>> angeldev
 router.delete("/:id",inscriptionController.deleteInscription)
 
 module.exports = router // Exporta el enrutador para su uso en la aplicación principal
