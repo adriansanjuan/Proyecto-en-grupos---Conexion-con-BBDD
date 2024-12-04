@@ -80,7 +80,7 @@ company.findAll = async(filter={}, result)=>{//el filtro está vacío
     if(datos && datos.length > 0){//si hay datos y la longitud de los datos es mayor a 0
         result(null, datos)//devuelve un resultado sin errores y con los datos
     }else{//si no
-        result({"error":"No hay datos"}, null)//devuelve un resultado donde el error es que no hay datos
+        result({"error":"No hay datos en el find all"}, null)//devuelve un resultado donde el error es que no hay datos
     }
 }
 //función para encontrar empresas por su ID
