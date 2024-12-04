@@ -25,7 +25,7 @@ const ejecutar = async()=>{
             postalCode:46001,
             phone:666504030,
             email:"manolosierras@sierras.com",
-            createDate:1-10-2024,
+            createDate:"1-10-2024",
             modifiedDate: new Date()
         },
         {
@@ -34,13 +34,13 @@ const ejecutar = async()=>{
             city:"Alicante",
             personInCharge:"Teodosio Ramirez ",
             personInChargeID:"99999997M",
-            tyoe:"INDUSTRIA",
+            type:"INDUSTRIA",
             address:"Gran Via, 300",
             area:"Alicante",
             postalCode:33000,
             phone:666504031,
             email:"aeronix2@aero.com",
-            createDate:10-10-2024,
+            createDate:"10-10-2024",
             modifiedDate: new Date()
         },
         {
@@ -49,13 +49,13 @@ const ejecutar = async()=>{
             city:"Madrid",
             personInCharge:"Antonio Virgolini",
             personInChargeID:"99999996F",
-            tyoe:"OSTELERIA",
+            type:"HOSTELERIA",
             address:"Gran Via, 33",
             area:"Madrid",
             postalCode:33000,
             phone:666504032,
             email:"passtasmadrid@passta.com",
-            createDate:3-10-2024,
+            createDate:"3-10-2024",
             modifiedDate: new Date()
         }
     ]

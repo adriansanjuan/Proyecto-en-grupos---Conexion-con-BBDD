@@ -27,10 +27,6 @@ const companySchema = new mongoose.Schema({//Se crea el schema del que van a par
         type:String,//tipo String
         required:false//no es requerido
     },
-    family:{//familia de la empresa
-        type:String,//tipo string
-        required:false//no es requerido
-    },
     address:{//dirección de la empresa
         type:String,//tipo string
         required:false//no es requerido

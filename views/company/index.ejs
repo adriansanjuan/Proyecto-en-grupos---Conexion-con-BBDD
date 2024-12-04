@@ -3,12 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company</title>
+    <title>EMPRESAS</title>
+    <style>
+        fieldset{
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
-    <h1>Inicio</h1>
+    <h1>EMPRESAS</h1>
+    <div id="empresas">
+
+    </div>
     <% for(let e of empresas){%>
-        <h3><%= e.name %></h3>
+        <fieldset>
+            <legend><h2><%= e.name %></h2></legend>
+
+            <h3>DATOS GENERALES</h3>
+            <p>CIF: <%= e.cif %></p>
+            <p>Tipo de empresa: <%= e.type %></p><br>
+
+            <h3>CEO/GERENTE</h3>
+            <p>Persona a cargo: <%= e.personInCharge %></p>
+            <p>ID de la persona: <%= e.personInChargeID %></p><br>
+
+            <h3>CONTACTO</h3>
+            <p>Teléfono: <%= e.phone %></p>
+            <p>Email: <%= e.email %></p><br>
+
+            <a href="/api/<%= process.env.API %>/company/<%= e._id %>">Más detalles</a>
+        </fieldset>
     <%} %>
 </body>
 </html>

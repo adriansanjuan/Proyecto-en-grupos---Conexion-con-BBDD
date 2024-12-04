@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= datosCompany.name %></title>
+</head>
+<body>
+    <fieldset>
+        <legend><h2><%= datosCompany.name %></h2></legend>
+
+        <h3>DATOS GENERALES</h3>
+        <p>CIF: <%= datosCompany.cif %></p>
+        <p>Tipo de empresa: <%= datosCompany.type %></p><br>
+
+        <h3>CEO/GERENTE</h3>
+        <p>Persona a cargo: <%= datosCompany.personInCharge %></p>
+        <p>ID de la persona: <%= datosCompany.personInChargeID %></p><br>
+
+        <h3>LOCALIZACIÓN</h3>
+        <p>Ciudad: <%= datosCompany.city %></p>
+        <p>Provincia: <%= datosCompany.area %></p>
+        <p>Código Postal: <%= datosCompany.postalCode %></p><br>
+        <p>Dirección: <%= datosCompany.address %></p>
+
+        <h3>CONTACTO</h3>
+        <p>Teléfono: <%= datosCompany.phone %></p>
+        <p>Email: <%= datosCompany.email %></p><br>
+
+        <h3>DATOS DE ACTUALIZACIÓN</h3>
+        <p>Fecha de creación: <%= datosCompany.createDate %></p>
+        <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p>
+        
+        <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a>
+    </fieldset>
+</body>
+</html>

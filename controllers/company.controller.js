@@ -8,18 +8,20 @@ exports.findAllCompanies = async(req, res) => {
             console.log(err)
             res.render("error.ejs", {err:err.error})
         }else{
-            res.render("/company/index.ejs", {empresas:datosCompany})
+            res.render("company/index.ejs", {empresas:datosCompany})
         }
     })
 }
 
 exports.findAllCompaniesById = async(req, res) => {
+    const {id} = req.params
+
     await companyModel.findCompanyById(id, function(err, datosCompany){
         if(err){
             console.log(err)
             res.render("error.ejs", {err:err.error})
         }else{
-            res.render("/company/index.ejs", {empresas:datosCompany})
+            res.render("company/show.ejs", {datosCompany})
         }
     })
 }
@@ -40,8 +42,17 @@ exports.createCompany = async(req, res) => {
     })
 }
 
-exports.showEditCompany = (req, res) => {
-    res.render("/company/edit.ejs")
+exports.showEditCompany = async(req, res) => {
+    const {id} = req.params
+
+    await companyModel.findCompanyById(id, function(err, datosCompany){
+        if(err){
+            console.log(err)
+            res.render("error.ejs", {err:err.error})
+        }else{
+            res.render("company/edit.ejs", {datosCompany})
+        }
+    })
 }
 
 exports.editCompany = async(req, res) => {

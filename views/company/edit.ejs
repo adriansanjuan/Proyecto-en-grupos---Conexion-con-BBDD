@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=datosCompany.name%> - Editar</title>
+</head>
+<body>
+    <form action="<%= BaseURL %>company">
+        <fieldset>
+            <legend><h2><%= datosCompany.name %></h2></legend>
+
+            <h3>DATOS GENERALES</h3>
+            <label for="type">Tipo de empresa: </label>
+            <input type="text" name="type" placeholder="<%= datosCompany.type %>">
+
+            <h3>LOCALIZACIÓN</h3>
+            <label for="ciudad">Ciudad: </label>
+            <input type="text" name="ciudad" placeholder="<%= datosCompany.city %>"><br><br>
+            <label for="provincia">Provincia</label>
+            <input type="text" name="provincia" placeholder="<%= datosCompany.area %>"><br><br>
+            <label for="postal">Código postal: </label>
+            <input type="number" name="postal" placeholder="<%= datosCompany.postalCode %>"><br><br>
+            <label for="direccion">Dirección: </label>
+            <input type="text" name="direccion" placeholder="<%= datosCompany.address %>">
+
+            <h3>CONTACTO</h3>
+            <label for="tel">Teléfono: </label>
+            <input type="tel" name="tel" placeholder="<%=datosCompany.phone%>"><br><br>
+            <label for="email">Correo electrónico: </label>
+            <input type="email" name="email" placeholder="<%=datosCompany.email%>">
+
+            <h3>DATOS DE ACTUALIZACIÓN</h3>
+            <p>Fecha de creación: <%= datosCompany.createDate %></p>
+            <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p>
+            
+            <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a>
+        </fieldset>
+    </form>
+</body>
+</html>
