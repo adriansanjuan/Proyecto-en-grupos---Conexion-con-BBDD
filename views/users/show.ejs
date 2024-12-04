@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario <%= datosUsuario.username %></title>
+</head>
+<body>
+    <h1><%= datosUsuario.username %></h1>
+    <p>ID: <%= datosUsuario.idUser %></p>
+    <p>NIF: <%= datosUsuario.nif %></p>
+    <p>Nombre: <%= datosUsuario.firstName %></p>
+    <p>Apellidos: <%= datosUsuario.lastName %></p>
+    <p>Email: <%= datosUsuario.email %></p>
+    <p>Created Date: <%= datosUsuario.createdDate %></p>
+    <p>Modified Date: <%= datosUsuario.modifiedDate %></p>
+    <p>ROL: <%= datosUsuario.profile %></p>
+    <p><a href="<%= BaseURL %>users">Volver</a>  <a href="<%= BaseURL %>users/edit/<%= datosUsuario.idUser %>">Editar</a></p>
+</body>
+</html>
