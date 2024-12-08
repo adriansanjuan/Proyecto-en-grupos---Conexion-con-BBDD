@@ -1,82 +1,81 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose")// Importa mongoose para MongoDB
 
-const inscriptionSchema = new mongoose.Schema({
+const inscriptionSchema = new mongoose.Schema({// Define el esquema de inscripción
     IdUser: {
-        type: Number, //tipo Number
-        required: true,//es requerido
+        type: Number,// Define tipo número
+        required: true,// Campo obligatorio
     },
     IdCompany: {
-        type: String, //tipo String
-        required: true,//es requerido
+        type: String,// Define tipo texto
+        ref: 'company',
+        required: true,
     },
     FecIni: {
-        type: Date, // Fecha obligatoria de inicio
-        required: true,//es requerido
+        type: Date,// Define tipo fecha
+        required: true,// Campo obligatorio
     },
     FecFin: {
-        type: Date, // Fecha opcional de fin
-        required: false,//no es requerido
+        type: Date,// Define tipo fecha
+        required: false,// Campo opcional
     },
     Observaciones: {
-        type: String, // Campo de texto libre
-        required: false,//no es requerido
+        type: String,// Define tipo texto
+        required: false,// Campo opcional
     },
 })
 
-//1:N
-
 
 // Crear el modelo a partir del esquema
-const Inscription = mongoose.model("Inscription", inscriptionSchema)
+const Inscription = mongoose.model("Inscription", inscriptionSchema)// Crea modelo Inscription
 
-Inscription.createInscription = async(inscriptionData, result) => {
-    const newInscription = new Inscription(inscriptionData)
-    await newInscription.save()
+Inscription.createInscription = async(inscriptionData, result) => {// Método para crear inscripción
+    const newInscription = new Inscription(inscriptionData)// Crea nueva instancia
+    await newInscription.save()// Guarda en base de datos
     .then((datos) => {
-        result(null, datos)
+        result(null, datos)// Retorna datos si hay éxito
     })
     .catch((err) => {
-        result(err, null)
+        result(err, null)// Retorna error si hay algún fallo
     })
 }
 
-Inscription.findAllInscription = async(result)=>{
-    const datos = await Inscription.find({})
-    if(datos && datos.length > 0){
-        result(null, datos)
-    }else{
-        result({"error":"No hay datos"}, null)
-    }
-}
-
-Inscription.findInscriptionById = async(id, result)=>{
-    const datos = await Inscription.findById(id)
+Inscription.findAllInscription = async(result)=>{// Método para buscar todas las inscripciones
+    const datos = await Inscription.find({})// Busca todas las inscripciones
     if(datos){
-        result(null,datos)
+        result(null, datos)// Retorna todos los datos encontrados
     }else{
-        result({"error":"No hay datos"},null)
+        result(null, [])// Retorna un array vacío
     }
 }
 
-Inscription.updateInscriptionById = async(id, inscriptionData, result) => {
-    await Inscription.findByIdAndUpdate(id, inscriptionData, {runValidators:true, new:true})
+Inscription.findInscriptionById = async(id, result)=>{// Método para buscar por ID
+    const datos = await Inscription.findById(id)// Busca por la ID
+    if(datos){
+        result(null,datos)// Retorna los datos si los encuentra
+    }else{
+        result({"error":"No hay datos"},null)// Retorna un  error si no encuentra
+    }
+}
+
+Inscription.updateInscriptionById = async(id, inscriptionData, result) => { // Método actualizar por ID
+    await Inscription.findByIdAndUpdate(id, inscriptionData, {runValidators:true, new:true}) // Actualiza documento
     .then((datosResultado) => {
-        result(null, datosResultado)
+        result(null, datosResultado)// Retorna los datos actualizados
     })
     .catch((err) => {
-        result(err, null)
+        result(err, null)// Retorna error si hay algún fallo
     })
 }
 
-Inscription.deleteInscriptionById = async(id, result) => {
+Inscription.deleteInscriptionById = async(id, result) => {// Método para eliminar por ID
     await Inscription.findByIdAndDelete(id)
     .then((datos) => {
-        result(null, datos)
+        result(null, datos)// Retorna los datos eliminados
     })
     .catch((err) => {
-        result(err, null)
+        result(err, null)// Retorna un error si hay algún fallo
     })
 }
 
 
-module.exports = Inscription
+module.exports = Inscription// Exportamos el modelo

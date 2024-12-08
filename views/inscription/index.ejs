@@ -8,35 +8,57 @@
 <body>
     <h1>Página Inscription</h1>
     <div>
-        <% for(let inscription of datosInscription) {%>
+        <% if(datosInscription && datosInscription.length > 0) { %> <!-- Verifica si hay inscripciones -->
+            <% for(let inscription of datosInscription) { %>         <!-- Itera sobre las inscripciones -->
+                <div>
+                    <div>
+                        <p>------------------------------</p>
+                    </div>
+                    <div>
+                        <p>Usuario: 
+                            <% const user = users.find(u => u.idUser === inscription.IdUser) %>
+                            <%= user ? `${user.firstName} ${user.lastName}` : inscription.IdUser %>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Id de la compañia: 
+                            <% const company = companies.find(c => c._id.toString() === inscription.IdCompany.toString()) %>
+                            <%= company ? company.name : inscription.IdCompany %>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Fecha inicio: <%= inscription.FecIni %></p>  <!-- Muestra fecha de inicio -->
+                    </div>
+                    <div>
+                        <p>Id: <%= inscription._id %></p>               <!-- Muestra ID de inscripción -->
+                    </div>
+                    <div>
+                        <p>Version <%= inscription.__v %></p>
+                    </div>
+                    <div>
+                        <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
+                    </div>
+                    <div>
+                        <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=DELETE" method="POST" style="display: inline;"> <!-- Formulario para eliminar -->
+                            <button type="submit">
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <p>------------------------------</p>
+                    </div>
+                </div>
+            <% } %>
+        <% } else { %>                                                 <!-- Si no hay inscripciones -->
             <div>
-                <div>
-                    <p>------------------------------</p>
-                </div>
-                <div>
-                    <p>Id del usuario: <%= inscription.IdUser %></p>
-                </div>
-                <div>
-                    <p>Id de la compañia: <%= inscription.IdCompany %></p>
-                </div>
-                <div>
-                    <p>Fecha inicio: <%= inscription.FecIni %></p>
-                </div>
-                <div>
-                    <p>Id: <%= inscription._id %></p>
-                </div>
-                <div>
-                    <p>Version <%= inscription.__v %></p>
-                </div>
-                <div>
-                    <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a>
-                </div>
-                <div>
-                    <p>------------------------------</p>
-                </div>
+                <p>No hay inscripciones disponibles</p>                <!-- Mensaje cuando no hay datos -->
+                <p>------------------------------</p>
             </div>
-        <% }%>
+        <% } %>
     </div>
-    <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>
+    <div style="margin-top: 20px;">
+        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
+    </div>
 </body>
 </html>

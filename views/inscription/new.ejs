@@ -8,18 +8,25 @@
 <body>
     <h1>Página New Inscription</h1>
     <form action="<%= BaseURL %>inscription" method="POST">
-        <input type="text" placeholder="Prueba..." name="FecIni" required> 
-        <input type="text" placeholder="Prueba..." name="IdCompany" required>        
-        <input type="text" placeholder="Prueba..." name="IdUser" required>        
-        <br>
-        <br>
-        <br>
-        <label></label>
-        <br>
+        <input type="date" placeholder="Fecha Inicio" name="FecIni" required> 
+        <select name="IdCompany" required>
+            <option value="">Seleccione una compañía</option>
+            <% companies.forEach(function(company) { %>
+                <option value="<%= company._id %>"><%= company.name %> - <%= company.cif %></option>
+            <% }); %>
+        </select>        
+        <select name="IdUser" required>
+            <option value="">Seleccione un usuario</option>
+            <% users.forEach(function(user) { %>
+                <option value="<%= user.idUser %>"><%= user.firstName %> <%= user.lastName %> - <%= user.nif %></option>
+            <% }); %>
+        </select>
+        <input type="date" placeholder="Fecha Fin" name="FecFin">
+        <input type="text" placeholder="Observaciones" name="Observaciones">        
         <br>
         <br>
         <button>Guardar</button>
     </form>
-    <a href="<%= BaseURL %>inscription/edit/1">Editar inscription</a>
+    <a href="<%= BaseURL %>inscription/">Volver atrás</a>
 </body>
 </html>

@@ -8,9 +8,11 @@
 <body>
     <h1>Página Edit Inscription</h1>
     <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=PATCH" method="POST">
-        <input type="text" placeholder="Prueba..." name="FecIni" value="<%= inscription.FecIni %> "required> 
-        <input type="text" placeholder="Prueba..." name="IdCompany" value="<%= inscription.IdCompany %>" required>        
-        <input type="text" placeholder="Prueba..." name="IdUser" value="<%= inscription.IdUser %>" required>        
+        <input type="text" placeholder="Fecha Inicio" name="FecIni" value="<%= inscription.FecIni %>" required> 
+        <input type="text" placeholder="ID Compañía" name="IdCompany" value="<%= inscription.IdCompany %>" required>        
+        <input type="text" placeholder="ID Usuario" name="IdUser" value="<%= inscription.IdUser %>" required>
+        <input type="text" placeholder="Fecha Fin" name="FecFin" value="<%= inscription.FecFin %>">
+        <input type="text" placeholder="Observaciones" name="Observaciones" value="<%= inscription.Observaciones %>">
         <br>
         <br>
         <br>
