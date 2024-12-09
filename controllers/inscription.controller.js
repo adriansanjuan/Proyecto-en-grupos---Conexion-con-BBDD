@@ -41,11 +41,7 @@ exports.showAllInscription = async(req,res) => {
                 if(err) {
                     res.render("error.ejs", {err})
                 } else {
-                    res.render("inscription/index.ejs",{
-                        datosInscription,
-                        companies,
-                        users
-                    })
+                    res.render("inscription/index.ejs",{datosInscription,companies,users})
                 }
             })
         }
