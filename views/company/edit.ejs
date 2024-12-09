@@ -40,6 +40,11 @@
             <h3>DATOS DE ACTUALIZACIÓN</h3>
             <p>Fecha de creación: <%= datosCompany.createDate %></p>
             <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p>
+            <% var fecha = new Date(); %>
+            <%var mes = (fecha.getMonth()+1).toString();%>
+            <%var dia = (fecha.getDate()).toString(); %>
+            <%var anyo = (fecha.getFullYear()).toString(); %>
+            <input type="hidden" name="modifiedDate" value="<%= `${anyo}-${mes}-${dia}` %>" readonly>
             
             <button>Enviar</button><br>
             <a href="<%= BaseURL %>company">Inicio</a>

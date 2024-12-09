@@ -13,10 +13,52 @@
     </style>
 </head>
 <body>
-    <form action="">
+    <form action="<%= BaseURL %>company" method="POST">
         <fieldset>
             <legend>Nueva Empresa</legend>
+
+            <h3>DATOS GENERALES</h3>
+            <label for="cif">CIF: </label>
+            <input type="text" name="cif" required placeholder="12345678"><br>
+            <label for="name">Nombre: </label>
+            <input type="text" name="name" placeholder="JTP.apps"><br>
+            <label for="type">Tipo de empresa: </label>
+            <input type="text" name="type" placeholder="FERRETERIA"><br>
+
+            <h3>PERSONA A CARGO</h3>
+            <label for="personInCharge">Nombre de la persona: </label>
+            <input type="text" name="personInCharge" placeholder="Plácido Jung"><br>
+            <label for="personInChargeID">ID de la persona: </label>
+            <input type="text" name="personInChargeID" placeholder="3333333"><br>
+
+            <h3>LOCALIZACIÓN</h3>
+            <label for="city">Ciudad: </label>
+            <input type="text" name="city" placeholder="Alicante"><br>
+            <label for="area">Provincia</label>
+            <input type="text" name="area" placeholder="Alicante"><br>
+            <label for="postalCode">Código postal: </label>
+            <input type="number" name="postalCode" placeholder="03014"><br>
+            <label for="address">Dirección: </label>
+            <input type="text" name="address" placeholder="Av. Maisonave, 33"><br>
+
+            <h3>CONTACTO</h3>
+            <label for="phone">Teléfono: </label>
+            <input type="tel" name="phone" placeholder="633333333"><br>
+            <label for="email">Correo electrónico: </label>
+            <input type="email" name="email" placeholder="jtp@gmail.com">
+
+            <h3>DATOS DE ACTUALIZACION</h3>
+            <% var fecha = new Date(); %>
+            <%var mes = (fecha.getMonth()+1).toString();%>
+            <%var dia = (fecha.getDate()).toString(); %>
+            <%var anyo = (fecha.getFullYear()).toString(); %>
+            <label for="createDate">Fecha de creación: </label>
+            <input type="text" name="createDate" value=<%= `${anyo}-${mes}-${dia}` %> readonly><br>
+            <label for="modifiedDate">Última fecha de modificación: </label>
+            <input type="text" name="modifiedDate" value=<%= `${anyo}-${mes}-${dia}` %> readonly>
             
+            <button>Enviar</button><br>
+            <a href="<%= BaseURL %>company">Inicio</a>
         </fieldset>
     </form>
 </body>

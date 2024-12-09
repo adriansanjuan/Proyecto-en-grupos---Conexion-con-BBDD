@@ -21,7 +21,7 @@
                         </p>
                     </div>
                     <div>
-                        <p>Id de la compañia: 
+                        <p>Nombre de la compañia: 
                             <% const company = companies.find(c => c._id.toString() === inscription.IdCompany.toString()) %>
                             <%= company ? company.name : inscription.IdCompany %>
                         </p>

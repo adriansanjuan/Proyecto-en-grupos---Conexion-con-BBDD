@@ -11,11 +11,11 @@ const inscriptionSchema = new mongoose.Schema({// Define el esquema de inscripci
         required: true,
     },
     FecIni: {
-        type: Date,// Define tipo fecha
+        type: String,// Define tipo fecha
         required: true,// Campo obligatorio
     },
     FecFin: {
-        type: Date,// Define tipo fecha
+        type: String,// Define tipo fecha
         required: false,// Campo opcional
     },
     Observaciones: {

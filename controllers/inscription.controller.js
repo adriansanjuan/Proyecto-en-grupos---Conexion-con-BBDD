@@ -13,7 +13,7 @@ exports.createInscription = async(req,res)=>{//Función para crear una nueva ins
     })
 }
 
-exports.showNewComment = async(req,res)=>{
+exports.showNewInscription = async(req,res)=>{
     const companyModel = require("../models/company.model")
     const userModel = require("../models/users.model")
     

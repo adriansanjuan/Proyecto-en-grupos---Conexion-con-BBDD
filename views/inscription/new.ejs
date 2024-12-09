@@ -12,7 +12,7 @@
         <%var mes = (fecha.getMonth()+1).toString();%>
         <%var dia = (fecha.getDate()).toString(); %>
         <%var anyo = (fecha.getFullYear()).toString(); %>
-        <input type="text" name="FecIni" value=<%= `${anyo}-${mes}-${dia}` %> readonly> 
+        <input type="text" name="FecIni" value=<%= `${anyo}-${mes}-${dia}` %> readonly>
         <select name="IdCompany" required>
             <option value="">Seleccione una compañía</option>
             <% companies.forEach(function(company) { %>
