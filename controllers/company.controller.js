@@ -27,7 +27,7 @@ exports.findAllCompaniesById = async(req, res) => {
 }
 
 exports.showNewCompany = (req, res) => {
-    res.render("/company/new.ejs")
+    res.render("company/new.ejs")
 }
 
 exports.createCompany = async(req, res) => {
@@ -57,7 +57,7 @@ exports.showEditCompany = async(req, res) => {
 
 exports.editCompany = async(req, res) => {
     const { id } = req.params
-    const { type, ciudad, direccion, provincia, postal, tel, email } = req.body
+    const { type, ciudad, direccion, provincia, postal, tel, email, modifiedDate } = req.body
     const companyActualizado = {
         type: type,
         city: ciudad,
@@ -65,7 +65,8 @@ exports.editCompany = async(req, res) => {
         area: provincia,
         postalCode: postal,
         phone: tel,
-        email: email
+        email: email,
+        modifiedDate: modifiedDate
     }
     await companyModel.updateCompanyById(id, companyActualizado, function(err,datosActualizados){
         if(err){

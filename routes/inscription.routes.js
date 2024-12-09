@@ -9,7 +9,7 @@ router.get("/",inscriptionController.showAllInscription)
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription
-router.get("/new",inscriptionController.showNewComment)
+router.get("/new",inscriptionController.showNewInscription)
 router.post("/",inscriptionController.createInscription)
 
 //PATCH

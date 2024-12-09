@@ -47,12 +47,12 @@ const companySchema = new mongoose.Schema({//Se crea el schema del que van a par
         type:String,//tipo String
         required:false//no es requerido
     },
-    createdDate:{//fecha en la que se creó la empresa
-        type:Date,//tipo fecha
+    createDate:{//fecha en la que se creó la empresa
+        type:String,//tipo fecha
         required:false//no es requerido
     },
     modifiedDate:{//última fecha de modificación
-        type:Date,//tipo fecha
+        type:String,//tipo fecha
         required:false//no es requerido
     }
 })

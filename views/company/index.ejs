@@ -14,6 +14,7 @@
 </head>
 <body>
     <h1>EMPRESAS</h1>
+    <a href="<%= BaseURL %>company/new">Nueva empresa</a>
     <div id="empresas">
 
     </div>
@@ -33,7 +34,7 @@
             <p>Teléfono: <%= e.phone %></p>
             <p>Email: <%= e.email %></p><br>
 
-            <a href="/api/<%= process.env.API %>/company/<%= e._id %>">Más detalles</a>
+            <a href="<%= BaseURL %>company/<%= e._id %>">Más detalles</a>
         </fieldset>
     <%} %>
 </body>
