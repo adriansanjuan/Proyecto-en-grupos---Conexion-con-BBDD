@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario <%= datosUsuario.username %></title>
+    <title>Usuario <%= datosUsuario.username %></title> <!-- Muestra el username del usuario en el título -->
 </head>
 <body>
-    <h1><%= datosUsuario.username %></h1>
-    <p>ID: <%= datosUsuario.idUser %></p>
-    <p>NIF: <%= datosUsuario.nif %></p>
-    <p>Nombre: <%= datosUsuario.firstName %></p>
-    <p>Apellidos: <%= datosUsuario.lastName %></p>
-    <p>Email: <%= datosUsuario.email %></p>
-    <p>Created Date: <%= datosUsuario.createdDate %></p>
-    <p>Modified Date: <%= datosUsuario.modifiedDate %></p>
-    <p>ROL: <%= datosUsuario.profile %></p>
-    <p><a href="<%= BaseURL %>users">Volver</a>  <a href="<%= BaseURL %>users/edit/<%= datosUsuario.idUser %>">Editar</a></p>
+    <h1><%= datosUsuario.username %></h1> <!-- Muestra el username -->
+    <p>ID: <%= datosUsuario.idUser %></p> <!-- Muestra el ID -->
+    <p>NIF: <%= datosUsuario.nif %></p> <!-- Muestra el NIF -->
+    <p>Nombre: <%= datosUsuario.firstName %></p> <!-- Muestra el nombre del usuario -->
+    <p>Apellidos: <%= datosUsuario.lastName %></p> <!-- Muestra los apellidos -->
+    <p>Email: <%= datosUsuario.email %></p> <!-- Muestra el email -->
+    <p>Created Date: <%= datosUsuario.createdDate %></p> <!-- Muestra la fecha de creación -->
+    <p>Modified Date: <%= datosUsuario.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
+    <p>ROL: <%= datosUsuario.profile %></p> <!-- Muestra el rol -->
+    <p>
+        <a href="<%= BaseURL %>users">Volver</a>  <!-- Enlace para volver al index -->
+        <a href="<%= BaseURL %>users/edit/<%= datosUsuario.idUser %>">Editar</a> <!-- Enlace para edit -->
+        <form action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar usuario -->
+            <button>Eliminar</button> <!-- Botón para eliminar -->
+        </form>
+    </p>
 </body>
 </html>

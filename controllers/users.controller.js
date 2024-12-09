@@ -28,19 +28,32 @@ exports.newUser = async function (req,res) {
 }
 
 exports.createUser = async function(req,res){
-    //const {newEmployee} = req.body
-    const newUser = new userModel(req.body)
-    await userModel.create(newUser,function(err,datosUsuarioCreado){
+    // Crear nuevo objeto usuario con los datos del formulario
+    const newUser = new userModel({
+        nif: req.body.nif,
+        username: req.body.username,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        picture: req.body.picture || null,
+        profile: req.body.profile,
+        createdDate: new Date(),
+        modifiedDate: new Date()
+    })
+
+    await userModel.create(newUser, function(err, datosUsuarioCreado){
         if(err){
+            console.error("Error al crear usuario:", err);
             res.render("error.ejs", {err})
-        }else{
+        } else {
             res.redirect(`/api/${process.env.API}/users/`)
         }
     })
 }
 
 exports.modifyUser = async function(req,res){
-    const id = req.params
+    const {id} = req.params
     await userModel.findById(id,function(err,datosUsuario){
         if(err){
             res.render("error.ejs", {err})
@@ -52,7 +65,16 @@ exports.modifyUser = async function(req,res){
 
 exports.updateUser = async function(req,res){
     const {id} = req.params
-    const updateUser = new userModel(req.body)
+    const updateUser = {
+        nif: req.body.nif,
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        profile: req.body.profile,
+        modifiedDate: new Date()
+    }
+    
     await userModel.update(id,updateUser,function(err,datosUsuarioActualizado){
         if(err){
             res.render("error.ejs", {err})
