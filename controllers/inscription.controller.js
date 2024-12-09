@@ -41,11 +41,7 @@ exports.showAllInscription = async(req,res) => {
                 if(err) {
                     res.render("error.ejs", {err})
                 } else {
-                    res.render("inscription/index.ejs",{
-                        datosInscription,
-                        companies,
-                        users
-                    })
+                    res.render("inscription/index.ejs",{datosInscription,companies,users})
                 }
             })
         }
@@ -54,11 +50,20 @@ exports.showAllInscription = async(req,res) => {
 
 exports.showEditInscription = async(req, res) => {//Función para mostrar formulario de edición
     const { id } = req.params//Obtiene el ID de los parámetros
-    await inscriptionModel.findInscriptionById(id,function(err,inscription){//Busca la inscripción por ID
+    await inscriptionModel.findInscriptionById(id, async function(err,inscription){//Busca la inscripción por ID
         if(err){//Si hay error
             res.render("error.ejs",{err:err.error})//Renderiza página de error
         }else{//Si no hay error
-            res.render("inscription/edit.ejs", {inscription})//Renderiza formulario de edición
+            const companyModel = require("../models/company.model")
+            const userModel = require("../models/users.model")
+            const companies = await companyModel.find({})
+            await userModel.findAll(function(err, users) {
+                if(err) {
+                    res.render("error.ejs", {err})
+                } else {
+                    res.render("inscription/edit.ejs",{inscription,companies,users})
+                }
+            })
         }
     })  
 }
