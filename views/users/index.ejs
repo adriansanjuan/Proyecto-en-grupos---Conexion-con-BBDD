@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>PAGINA INICIO USERS</h1>
-    <a href="new.ejs">Crear usuario</a>
+    <a href="<%= BaseURL %>users/new">Crear usuario</a>
     <% for( let c of datosUsers ) { %>
         <ul>
             <li>NIF : <%= c.nif %></li>

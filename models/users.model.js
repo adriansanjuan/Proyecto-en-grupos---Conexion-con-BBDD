@@ -1,46 +1,43 @@
-const { connection } = require("mongoose")
-const dbConn = require("../utils/mysql.config")
-const mysql = require("mysql")
+const dbConn = require("../utils/mysql.config") // Importa configuración de MySQL
+const mysql = require("mysql") // Importa MySQL (npm i mysql)
 
-let user = function(empleado){
+let user = function (empleado) { // Constructor de usuario
     //id autoincremental
-    this.nif = empleado.nif
-    this.username = empleado.username,
-    this.password = empleado.password,
-    this.firstName = empleado.firstName,
-    this.lastName = empleado.lastName,
-    this.createdDate = new Date(),
-    this.modifiedDate = new Date(),
-    this.email = empleado.email,
-    this.picture = empleado.picture,
-    this.profile = empleado.profile
+    this.nif = empleado.nif // NIF
+    this.username = empleado.username, // Usuario
+        this.password = empleado.password, // Contraseña
+        this.firstName = empleado.firstName, // Nombre
+        this.lastName = empleado.lastName, // Apellido
+        this.createdDate = empleado.createdDate || new Date(), // Fecha creación
+        this.modifiedDate = new Date(), // Fecha modificación
+        this.email = empleado.email, // Email
+        this.picture = empleado.picture || null, // Foto 
+        this.profile = empleado.profile // Rol
 }
 
+user.findAll = async (result) => { // Función para obtener todos los usuarios
+    let connection = mysql.createConnection(dbConn) // Crea conexión MySQL
 
-//Encontrar todos
-user.findAll = async (result) => {
-    let connection = mysql.createConnection(dbConn)
-
-    connection.connect((error)=>{
+    connection.connect((error) => { // Abre la conexion
         if (error) {
             console.log("Error conectando a MySQL. Desc: " + error)
         } else {
             console.log("Conexion MySQL abierta")
-            const sql = "select * from users"
-            connection.query(sql,function(err,datos){
-                if (err) {
-                    result(err,null)
-                }else{
-                    result(null,datos)
+            const sql = "select * from users" // Query para seleccionar usuarios
+            connection.query(sql, function (err, datos) { // Ejecuta la query
+                if (err) { // Si hay error
+                    result(err, null) //Envia el error sin los datos
+                } else { //Si no hay error
+                    result(null, datos) //Envia los datos sin el error
                 }
             })
 
-            connection.end((err)=>{
-                if (err) {
-                    console.log("Error al desconectar de MySQL. Desc: " + err)
+            connection.end((err) => { // Cierra la conexión
+                if (err) { // Si hay un error
+                    console.log("Error al desconectar de MySQL. Desc: " + err) //Hace un console log de error
                     return
-                } else {
-                    console.log("Conexión MySQL cerrada")
+                } else { //Si no hay un error
+                    console.log("Conexión MySQL cerrada") //Hace un console log de que se ha cerrado la conexion
                 }
             })
         }
@@ -48,53 +45,83 @@ user.findAll = async (result) => {
 }
 
 //Encontrar por id
-user.findById = async (id,result) => {
-    let connection = mysql.createConnection(dbConn)
+user.findById = async (id, result) => { // Método para buscar usuario por ID
+    let connection = mysql.createConnection(dbConn) // Crea conexión MySQL
 
-    connection.connect((error)=>{
+    connection.connect((error) => { // Conecta a la BD
         if (error) {
             console.log("Error conectando a MySQL. Desc: " + error)
         } else {
             console.log("Conexión MySQL abierta")
-            const sql = "select * from users where idUser = ?"
-            connection.query(sql,id,function(err,datos){
-                if (err) {
-                    result(err,null)
-                } else {
-                    result(null,datos)
+            const sql = "select * from users where idUser = ?" // Query para buscar por ID
+            connection.query(sql, id, function (err, datos) { // Ejecuta la query
+                if (err) { // Si hay error
+                    result(err, null) //Envia el error sin los datos
+                } else { //Si no hay error
+                    result(null, datos) //Envia los datos sin el error
                 }
             })
-            connection.end((err)=>{
-                if (err) {
-                    console.log("Error al desconectar de MySQL. Desc: " + err)
-                    return   
-                } else {
-                    console.log("Conexión MySQL cerrada")
+            connection.end((err) => { // Cierra la conexión
+                if (err) { // Si hay un error
+                    console.log("Error al desconectar de MySQL. Desc: " + err) //Hace un console log de error
+                    return
+                } else { //Si no hay un error
+                    console.log("Conexión MySQL cerrada") //Hace un console log de que se ha cerrado la conexion
                 }
             })
         }
     })
 }
 
-user.create = async (newUser, result) => {
-    let connection = mysql.createConnection(dbConn)
+user.create = async (newUser, result) => { // Método para crear usuario
+    let connection = mysql.createConnection(dbConn) // Crea conexión MySQL
 
-    connection.connect((error)=>{
+    connection.connect((error) => { // Conecta a la BD
         if (error) {
             console.log("Error conectando a MySQL. Desc: " + error)
         } else {
             console.log("Conexión MySQL abierta")
-            const sql = "insert into users SET ?"
-    
-            connection.query(sql,newUser,function (err,datos) {
-                if (err) {
-                    result(err,null)
-                } else {
-                    result(null,datos)
+            const sql = "insert into users SET ?" // Query para insertar usuario
+
+            connection.query(sql, newUser, function (err, datos) { // Ejecuta la query
+                if (err) { // Si hay error
+                    result(err, null) //Envia el error sin los datos
+                } else { //Si no hay error
+                    result(null, datos)//Envia los datos sin el error
                 }
             })
 
-            connection.end((err)=>{
+            connection.end((err) => { // Cierra la conexión
+                if (err) { // Si hay un error
+                    console.log("Error al desconectar de MySQL. Desc: " + err) //Hace un console log de error
+                    return
+                } else { //Si no hay un error
+                    console.log("Conexión MySQL cerrada") //Hace un console log de que se ha cerrado la conexion
+                }
+            })
+        }
+    })
+}
+
+user.update = async (id, updateUser, result) => { // Método para actualizar usuario
+    let connection = mysql.createConnection(dbConn) // Crea conexión MySQL
+
+    connection.connect((error) => { // Conecta a la BD
+        if (error) {
+            console.log("Error conectando a MySQL. Desc: " + error)
+        } else {
+            console.log("Conexión MySQL abierta")
+            const sql = "update users SET ? where idUser = ?" // Query para actualizar usuario
+
+            connection.query(sql, [updateUser, id], function (err, datos) { // Ejecuta la query
+                if (err) { 
+                    result(err, null)
+                } else {
+                    result(null, datos)
+                }
+            })
+
+            connection.end((err) => { // Cierra la conexión
                 if (err) {
                     console.log("Error al desconectar de MySQL. Desc: " + err)
                     return
@@ -106,25 +133,25 @@ user.create = async (newUser, result) => {
     })
 }
 
-user.update = async (id,updateUser,result) => {
-    let connection = mysql.createConnection(dbConn)
+user.deleteById = async (id, result) => { // Método para eliminar usuario
+    let connection = mysql.createConnection(dbConn) // Crea conexión MySQL
 
-    connection.connect((error)=>{
+    connection.connect((error) => { // Conecta a la BD
         if (error) {
             console.log("Error conectando a MySQL. Desc: " + error)
         } else {
             console.log("Conexión MySQL abierta")
-            const sql = "update users SET ? where idUser = ?"
-    
-            connection.query(sql,[updateUser,id],function (err,datos) {
+            const sql = "delete from users where idUser = ?" // Query para eliminar usuario            
+
+            connection.query(sql, id, function (err, datos) { // Ejecuta la query
                 if (err) {
-                    result(err,null)
+                    result(err, null)
                 } else {
-                    result(null,datos)
+                    result(null, datos)
                 }
             })
 
-            connection.end((err)=>{
+            connection.end((err) => { // Cierra la conexión
                 if (err) {
                     console.log("Error al desconectar de MySQL. Desc: " + err)
                     return
@@ -136,34 +163,4 @@ user.update = async (id,updateUser,result) => {
     })
 }
 
-user.deleteById = async (id,result) => {
-    let connection = mysql.createConnection(dbConn)
-
-    connection.connect((error) => {
-        if(error){
-            console.log("Error conectando a MySQL. Desc: " + error)
-        } else {
-            console.log("Conexión MySQL abierta")
-            const sql = "delete from users where id = ?"            
-            
-            connection.query(sql,id,function(err,datos){
-                if(err){
-                    result(err,null)
-                }else{
-                    result(null,datos)
-                }
-            })
-    
-            connection.end((err)=>{
-                if(err){
-                    console.log("Error al desconectar de MySQL. Desc: " + err)
-                    return
-                }else{
-                    console.log("Conexión MySQL cerrada")
-                }
-            })
-        }
-    })
-}
-
-module.exports = user
+module.exports = user // Exporta el modelo
