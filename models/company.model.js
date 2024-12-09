@@ -90,17 +90,19 @@ company.findCompanyById = async(id, result) => {//aceptamos como parámetro el I
 }
 //función para actualizar empresas por su ID
 company.updateCompanyById = async(id, companyData, result) => {//aceptamos como parámetros el id de la empresa y los datos que se van a actualizar
-    await Comment.findByIdAndUpdate(id, companyData, {runValidators:true, new:true})//se busca la empresa por su id y se actualizan sus datos mediante el comando findByIdAndUpdate
+    await company.findByIdAndUpdate(id, companyData, {runValidators:true, new:true})//se busca la empresa por su id y se actualizan sus datos mediante el comando findByIdAndUpdate
     .then((datosResult) => {//si hay datos
+        console.log("todo ha ido bien")
         result(null, datosResult)//devuelve un resultado sin errores y con los datos de la empresa actualizados
     })
     .catch((err) => {//si no
+        console.log("cagadon")
         result(err, null)//devuelve un resultado con el error
     })
 }
 //función para eliminar las empresas por su ID
 company.deleteCompanyById = async(id, result) => {//aceptamos como parámetro el ID de la empresa
-    await comment.findByIdAndDelete(id)//se elimina la empresa por su ID utilizando el comando findByIdAndDelete
+    await company.findByIdAndDelete(id)//se elimina la empresa por su ID utilizando el comando findByIdAndDelete
     .then((datos) => {//si hay datos
         result(null, datos)//devuelve un resultado sin errores y con los datos
     })

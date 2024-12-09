@@ -57,31 +57,35 @@ exports.showEditCompany = async(req, res) => {
 
 exports.editCompany = async(req, res) => {
     const { id } = req.params
-    const { Adress, Area, PostalCode, Phone, Email } = req.body
-    const inscriptionActualizado = {
-        address:Adress,
-        area:Area,
-        postalCode:PostalCode,
-        phone:Phone,
-        email:Email
+    const { type, ciudad, direccion, provincia, postal, tel, email } = req.body
+    const companyActualizado = {
+        type: type,
+        city: ciudad,
+        adress: direccion,
+        area: provincia,
+        postalCode: postal,
+        phone: tel,
+        email: email
     }
-    await companyModel.updateCompanyById(id, companyData, function(err,datosActualizados){
+    await companyModel.updateCompanyById(id, companyActualizado, function(err,datosActualizados){
         if(err){
+            console.log("error")
             res.render("error.ejs", {err})
         }else{
             console.log(datosActualizados)
-            res.redirect(`/api/${process.env.API}/inscription/`)
+            res.redirect(`/api/${process.env.API}/company/${datosActualizados._id}`)
         }
     })        
 }
 
 exports.deleteCompany = async(req, res)=>{
     const {id} = req.params
-    await companyModell.deleteCompanyById(id,function(err,datosEliminados){
+    await companyModel.deleteCompanyById(id,function(err,datosEliminados){
         if(err){
+            console.log("cagadom")
             res.render("error.ejs", {err})
         }else{
-            res.redirect(`/api/${process.env.API}/inscription/`)
+            res.redirect(`/api/${process.env.API}/company`)
         }
     })    
 }

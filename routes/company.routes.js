@@ -13,7 +13,7 @@ router.post("/", companyController.createCompany)
 
 //PATCH
 router.get("/edit/:id", companyController.showEditCompany)
-router.patch("/", companyController.editCompany)
+router.patch("/:id", companyController.editCompany)
 
 //DELETE
 router.delete("/:id", companyController.deleteCompany)

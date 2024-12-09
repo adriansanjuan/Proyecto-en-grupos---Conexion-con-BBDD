@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= datosCompany.name %></title>
+    <style>
+        fieldset{
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
     <fieldset>
@@ -31,7 +38,11 @@
         <p>Fecha de creación: <%= datosCompany.createDate %></p>
         <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p>
         
-        <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a>
+        <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a><br>
+        <a href="<%= BaseURL %>company">Inicio</a><br>
+        <form action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST">
+            <button>Eliminar</button>
+        </form>
     </fieldset>
 </body>
 </html>
