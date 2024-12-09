@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
     <h1>Página Inscription</h1>
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
+        <a href="<%= BaseURL %>company">Empresas</a>
+        <a href="<%= BaseURL %>users">Usuarios</a>
+    </fieldset><br>
     <div>
+
         <% if(datosInscription && datosInscription.length > 0) { %> <!-- Verifica si hay inscripciones -->
             <% for(let inscription of datosInscription) { %>         <!-- Itera sobre las inscripciones -->
-                <div>
-                    <div>
-                        <p>------------------------------</p>
-                    </div>
+                <fieldset>
                     <div>
                         <p>Usuario: 
                             <% const user = users.find(u => u.idUser === inscription.IdUser) %>
@@ -38,27 +43,21 @@
                     <div>
                         <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
                     </div>
-                    <div>
-                        <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=DELETE" method="POST" > <!-- Formulario para eliminar -->
-                            <button type="submit">
-                                Eliminar
-                            </button>
-                        </form>
-                    </div>
-                    <div>
-                        <p>------------------------------</p>
-                    </div>
-                </div>
+                    <form id="eliminar" action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=DELETE" method="POST" > <!-- Formulario para eliminar -->
+                        <button type="submit">
+                            Eliminar
+                        </button>
+                    </form>
+                </fieldset><br>
             <% } %>
         <% } else { %>                                                 <!-- Si no hay inscripciones -->
-            <div>
+            <fieldset>
                 <p>No hay inscripciones disponibles</p>                <!-- Mensaje cuando no hay datos -->
-                <p>------------------------------</p>
-            </div>
+            </fieldset>
         <% } %>
     </div>
     <div style="margin-top: 20px;">
-        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
+        
     </div>
 </body>
 </html>

@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= datosCompany.name %></title>
-    <style>
-        fieldset{
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
+    <h1><%= datosCompany.name %></h1>
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>company">Inicio</a>
+        <a href="<%= BaseURL %>inscription">Inscripciones</a>
+        <a href="<%= BaseURL %>users">Usuarios</a>
+    </fieldset><br>
+
     <fieldset>
-        <legend><h2><%= datosCompany.name %></h2></legend>
 
         <h3>DATOS GENERALES</h3>
         <p>CIF: <%= datosCompany.cif %></p>
@@ -39,8 +40,7 @@
         <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p>
         
         <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a><br>
-        <a href="<%= BaseURL %>company">Inicio</a><br>
-        <form action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST">
+        <form id="eliminar" action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST">
             <button>Eliminar</button>
         </form>
     </fieldset>

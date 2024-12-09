@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=datosCompany.name%> - Editar</title>
-    <style>
-        fieldset{
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
+    <h1>Editar <%= datosCompany.name %></h1>
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>company">Inicio</a>
+        <a href="<%= BaseURL %>inscription">Inscripciones</a>
+        <a href="<%= BaseURL %>users">Usuarios</a>
+    </fieldset><br>
+
     <form action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=PATCH" method="POST">
         <fieldset>
-            <legend><h2><%= datosCompany.name %></h2></legend>
 
             <h3>DATOS GENERALES</h3>
             <label for="type">Tipo de empresa: </label>
@@ -47,7 +48,6 @@
             <input type="hidden" name="modifiedDate" value="<%= `${anyo}-${mes}-${dia}` %>" readonly>
             
             <button>Enviar</button><br>
-            <a href="<%= BaseURL %>company">Inicio</a>
         </fieldset>
     </form>
 </body>
