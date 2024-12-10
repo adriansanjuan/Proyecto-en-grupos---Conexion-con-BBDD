@@ -10,32 +10,32 @@
 <body>
     <h1>Página Inscription</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
-        <a href="<%= BaseURL %>company">Empresas</a>
-        <a href="<%= BaseURL %>users">Usuarios</a>
+        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a> <!-- Enlace para nueva inscripción -->
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de emprtesa -->
+        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset><br>
     <div>
 
         <% if(datosInscription && datosInscription.length > 0) { %> <!-- Verifica si hay inscripciones -->
-            <% for(let inscription of datosInscription) { %>         <!-- Itera sobre las inscripciones -->
+            <% for(let inscription of datosInscription) { %> <!-- Itera sobre las inscripciones -->
                 <fieldset>
                     <div>
-                        <p>Usuario: 
+                        <p>Usuario: <!-- Muestra el nombre del usuario -->
                             <% const user = users.find(u => u.idUser === inscription.IdUser) %>
                             <%= user ? `${user.firstName} ${user.lastName}` : inscription.IdUser %>
                         </p>
                     </div>
                     <div>
-                        <p>Nombre de la compañia: 
+                        <p>Nombre de la compañia: <!-- Muestra el nombre de la empresa -->
                             <% const company = companies.find(c => c._id.toString() === inscription.IdCompany.toString()) %>
                             <%= company ? company.name : inscription.IdCompany %>
                         </p>
                     </div>
                     <div>
-                        <p>Fecha inicio: <%= inscription.FecIni %></p>  <!-- Muestra fecha de inicio -->
+                        <p>Fecha inicio: <%= inscription.FecIni %></p> <!-- Muestra fecha de inicio -->
                     </div>
                     <div>
-                        <p>Id: <%= inscription._id %></p>               <!-- Muestra ID de inscripción -->
+                        <p>Id: <%= inscription._id %></p> <!-- Muestra ID de inscripción -->
                     </div>
                     <div>
                         <p>Version <%= inscription.__v %></p>
@@ -50,9 +50,9 @@
                     </form>
                 </fieldset><br>
             <% } %>
-        <% } else { %>                                                 <!-- Si no hay inscripciones -->
+        <% } else { %> <!-- Si no hay inscripciones -->
             <fieldset>
-                <p>No hay inscripciones disponibles</p>                <!-- Mensaje cuando no hay datos -->
+                <p>No hay inscripciones disponibles</p> <!-- Mensaje cuando no hay datos -->
             </fieldset>
         <% } %>
     </div>

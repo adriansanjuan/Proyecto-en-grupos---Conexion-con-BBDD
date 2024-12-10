@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config()//Importa y configura las variables de entorno
 
 const dbConn = {
     host:process.env.MYSQL_HOST,
@@ -8,4 +8,4 @@ const dbConn = {
     database:process.env.MYSQL_DATABASE
 }
 
-module.exports = dbConn
+module.exports = dbConn//Exportamos la conexion con MySQL

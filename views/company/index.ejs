@@ -10,9 +10,9 @@
 <body>
     <h1>EMPRESAS</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>company/new">Nueva empresa</a>
-        <a href="<%= BaseURL %>inscription">Inscripciones</a>
-        <a href="<%= BaseURL %>users">Usuarios</a>
+        <a href="<%= BaseURL %>company/new">Nueva empresa</a> <!-- Enlace para nueva emprtesa -->
+        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripciones -->
+        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset>
     
     <div id="empresas">
@@ -20,21 +20,21 @@
     </div>
     <% for(let e of empresas){%>
         <fieldset>
-            <legend><h2><%= e.name %></h2></legend>
+            <legend><h2><%= e.name %></h2></legend> <!-- Muestra el nombre de la empresa -->
 
             <h3>DATOS GENERALES</h3>
-            <p>CIF: <%= e.cif %></p>
-            <p>Tipo de empresa: <%= e.type %></p><br>
+            <p>CIF: <%= e.cif %></p> <!-- Muestra el CIF -->
+            <p>Tipo de empresa: <%= e.type %></p><br> <!-- Muestra el tipo de empresa -->
 
             <h3>CEO/GERENTE</h3>
-            <p>Persona a cargo: <%= e.personInCharge %></p>
-            <p>ID de la persona: <%= e.personInChargeID %></p><br>
+            <p>Persona a cargo: <%= e.personInCharge %></p> <!-- Muestra la persona a cargo -->
+            <p>ID de la persona: <%= e.personInChargeID %></p><br> <!-- Muestra el id de la empresa -->
 
             <h3>CONTACTO</h3>
-            <p>Teléfono: <%= e.phone %></p>
-            <p>Email: <%= e.email %></p><br>
+            <p>Teléfono: <%= e.phone %></p> <!-- Muestra el telefono -->
+            <p>Email: <%= e.email %></p><br> <!-- Muestra el email -->
 
-            <a href="<%= BaseURL %>company/<%= e._id %>">Más detalles</a>
+            <a href="<%= BaseURL %>company/<%= e._id %>">Más detalles</a> <!-- Enlace al show de la cempresa con el id -->
         </fieldset>
     <%} %>
 </body>

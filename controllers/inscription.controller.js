@@ -13,35 +13,35 @@ exports.createInscription = async(req,res)=>{//Función para crear una nueva ins
     })
 }
 
-exports.showNewInscription = async(req,res)=>{
-    const companyModel = require("../models/company.model")
-    const userModel = require("../models/users.model")
+exports.showNewInscription = async(req,res)=>{//Función muestra las nuevas inscripciones
+    const companyModel = require("../models/company.model")//Extrae el contenido del modelo
+    const userModel = require("../models/users.model")//Extrae el contenido del modelo
     
-    const companies = await companyModel.find({})
-    await userModel.findAll(function(err, users) {
-        if(err) {
-            res.render("error.ejs", {err})
-        } else {
-            res.render("inscription/new.ejs", { companies, users })
+    const companies = await companyModel.find({})//Crea la constante con el contenido del companyModel
+    await userModel.findAll(function(err, users) {//Llama al método del modelo para encontrar todos los usuarios
+        if(err) {//Si hay error
+            res.render("error.ejs", {err})//Renderiza página de error
+        } else {//Si no hay error
+            res.render("inscription/new.ejs", { companies, users })//Renderiza el formulario de nueva inscripción
         }
     })
 }
 
-exports.showAllInscription = async(req,res) => {
-    await inscriptionModel.findAllInscription(async function(err,datosInscription){
-        if(err){
-            console.log(err)
-            res.render("error.ejs",{err:err.error})
-        }else{
-            const companyModel = require("../models/company.model")
-            const userModel = require("../models/users.model")
-            const companies = await companyModel.find({})
+exports.showAllInscription = async(req,res) => {//Función para mostrar todas las inscripciones
+    await inscriptionModel.findAllInscription(async function(err,datosInscription){//Llama al método del modelo para encontrar todas las inscripciones
+        if(err){//Si hay error
+            console.log(err)//Muestra el error en consola
+            res.render("error.ejs",{err:err.error})//Renderiza página de error
+        }else{//Si no hay error
+            const companyModel = require("../models/company.model")//Extrae el contenido del modelo
+            const userModel = require("../models/users.model")//Extrae el contenido del modelo
+            const companies = await companyModel.find({})//Crea la constante con el contenido del companyModel
             
-            await userModel.findAll(function(err, users) {
-                if(err) {
-                    res.render("error.ejs", {err})
-                } else {
-                    res.render("inscription/index.ejs",{datosInscription,companies,users})
+            await userModel.findAll(function(err, users) {//Llama al método del modelo para encontrar todos los usuarios
+                if(err) {//Si hay error
+                    res.render("error.ejs", {err})//Renderiza página de error
+                } else {//Si no hay error
+                    res.render("inscription/index.ejs",{datosInscription,companies,users})//Renderiza página que muestra todas las inscripciones
                 }
             })
         }
@@ -54,14 +54,14 @@ exports.showEditInscription = async(req, res) => {//Función para mostrar formul
         if(err){//Si hay error
             res.render("error.ejs",{err:err.error})//Renderiza página de error
         }else{//Si no hay error
-            const companyModel = require("../models/company.model")
-            const userModel = require("../models/users.model")
-            const companies = await companyModel.find({})
-            await userModel.findAll(function(err, users) {
-                if(err) {
-                    res.render("error.ejs", {err})
-                } else {
-                    res.render("inscription/edit.ejs",{inscription,companies,users})
+            const companyModel = require("../models/company.model")//Extrae el contenido del modelo
+            const userModel = require("../models/users.model")//Extrae el contenido del modelo
+            const companies = await companyModel.find({})//Crea la constante con el contenido del companyModel
+            await userModel.findAll(function(err, users) {//Llama al método del modelo para encontrar todos los usuarios
+                if(err) {//Si hay error
+                    res.render("error.ejs", {err})//Renderiza página de error
+                } else {//Si no hay error
+                    res.render("inscription/edit.ejs",{inscription,companies,users})//Renderiza el formulario de edición
                 }
             })
         }

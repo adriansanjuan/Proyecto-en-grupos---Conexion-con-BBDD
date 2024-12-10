@@ -4,23 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario <%= datosUsuario.username %></title> <!-- Muestra el username del usuario en el título -->
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
-    <h1><%= datosUsuario.username %></h1> <!-- Muestra el username -->
-    <p>ID: <%= datosUsuario.idUser %></p> <!-- Muestra el ID -->
-    <p>NIF: <%= datosUsuario.nif %></p> <!-- Muestra el NIF -->
-    <p>Nombre: <%= datosUsuario.firstName %></p> <!-- Muestra el nombre del usuario -->
-    <p>Apellidos: <%= datosUsuario.lastName %></p> <!-- Muestra los apellidos -->
-    <p>Email: <%= datosUsuario.email %></p> <!-- Muestra el email -->
-    <p>Created Date: <%= datosUsuario.createdDate %></p> <!-- Muestra la fecha de creación -->
-    <p>Modified Date: <%= datosUsuario.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
-    <p>ROL: <%= datosUsuario.profile %></p> <!-- Muestra el rol -->
-    <p>
-        <a href="<%= BaseURL %>users">Volver</a>  <!-- Enlace para volver al index -->
+    <h1><%= datosUsuario.username %></h1> <!-- Muestra el nombre de usuario -->
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>users">Inicio</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+    </fieldset><br>
+
+    <fieldset>
+
+        <h3>DATOS PERSONALES</h3>
+        <p>ID: <%= datosUsuario.idUser %></p> <!-- Muestra el ID -->
+        <p>NIF: <%= datosUsuario.nif %></p> <!-- Muestra el NIF -->
+        <p>Nombre: <%= datosUsuario.firstName %></p> <!-- Muestra el nombre  -->
+        <p>Apellidos: <%= datosUsuario.lastName %></p> <!-- Muestra los apellidos -->
+        <p>Email: <%= datosUsuario.email %></p> <!-- Muestra el email -->
+
+        <h3>DATOS DE ACTUALIZACIÓN</h3>
+        <p>Created Date: <%= datosUsuario.createdDate %></p> <!-- Muestra la fecha de creación -->
+        <p>Modified Date: <%= datosUsuario.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
+        <p>ROL: <%= datosUsuario.profile %></p> <!-- Muestra el rol -->
+        
+        <a href="<%= BaseURL %>users">Volver</a> <!-- Enlace para volver al index -->
         <a href="<%= BaseURL %>users/edit/<%= datosUsuario.idUser %>">Editar</a> <!-- Enlace para edit -->
         <form action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar usuario -->
             <button>Eliminar</button> <!-- Botón para eliminar -->
         </form>
-    </p>
+    </fieldset>
+    
 </body>
 </html>

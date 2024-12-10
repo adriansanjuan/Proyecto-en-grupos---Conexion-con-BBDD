@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio Users</title>
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
     <h1>PAGINA INICIO USERS</h1>
-    <a href="<%= BaseURL %>users/new">Crear usuario</a>
-    <% for( let c of datosUsers ) { %>
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>users/new">Nuevo usuario</a>  <!-- Enlace para nueva inscripción -->
+        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+    </fieldset><br>
+
+    <a href="<%= BaseURL %>users/new">Crear usuario</a> <!-- Enlace para crear usuario -->
+    <% for( let c of datosUsers ) { %> <!-- Bucle para listar los usuarios -->
         <ul>
             <li>NIF : <%= c.nif %></li>
             <li>Username : <%= c.username %></li>
-            <a href="<%= BaseURL %>users/<%= c.idUser %>">Show Details</a>
+            <a href="<%= BaseURL %>users/<%= c.idUser %>">Show Details</a>  <!-- Enlace a la pagina de show con el id del usuario -->
         </ul>
         <hr>
     <% } %>

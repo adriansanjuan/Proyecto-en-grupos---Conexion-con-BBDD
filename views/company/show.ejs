@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= datosCompany.name %></title>
+    <title><%= datosCompany.name %></title> <!-- Muestra el nombre de la empresa en el titulo -->
     <base href="/">
     <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
-    <h1><%= datosCompany.name %></h1>
+    <h1><%= datosCompany.name %></h1><!-- Muestra el nombre de la empresa -->
     <fieldset id="nav">
         <a href="<%= BaseURL %>company">Inicio</a>
         <a href="<%= BaseURL %>inscription">Inscripciones</a>
@@ -18,30 +18,30 @@
     <fieldset>
 
         <h3>DATOS GENERALES</h3>
-        <p>CIF: <%= datosCompany.cif %></p>
-        <p>Tipo de empresa: <%= datosCompany.type %></p><br>
+        <p>CIF: <%= datosCompany.cif %></p> <!-- Muestra el CIF -->
+        <p>Tipo de empresa: <%= datosCompany.type %></p><br> <!-- Muestra el tipo de empresa -->
 
         <h3>CEO/GERENTE</h3>
-        <p>Persona a cargo: <%= datosCompany.personInCharge %></p>
-        <p>ID de la persona: <%= datosCompany.personInChargeID %></p><br>
+        <p>Persona a cargo: <%= datosCompany.personInCharge %></p> <!-- Muestra el nombre de la persona a cargo -->
+        <p>ID de la persona: <%= datosCompany.personInChargeID %></p><br> <!-- Muestra el ID -->
 
         <h3>LOCALIZACIÓN</h3>
-        <p>Ciudad: <%= datosCompany.city %></p>
-        <p>Provincia: <%= datosCompany.area %></p>
-        <p>Código Postal: <%= datosCompany.postalCode %></p><br>
-        <p>Dirección: <%= datosCompany.address %></p>
+        <p>Ciudad: <%= datosCompany.city %></p> <!-- Muestra la ciudad -->
+        <p>Provincia: <%= datosCompany.area %></p> <!-- Muestra la provincia -->
+        <p>Código Postal: <%= datosCompany.postalCode %></p><br> <!-- Muestra el codigo postal -->
+        <p>Dirección: <%= datosCompany.address %></p> <!-- Muestra la dirección -->
 
         <h3>CONTACTO</h3>
-        <p>Teléfono: <%= datosCompany.phone %></p>
-        <p>Email: <%= datosCompany.email %></p><br>
+        <p>Teléfono: <%= datosCompany.phone %></p> <!-- Muestra el telefono -->
+        <p>Email: <%= datosCompany.email %></p><br> <!-- Muestra el email -->
 
         <h3>DATOS DE ACTUALIZACIÓN</h3>
-        <p>Fecha de creación: <%= datosCompany.createDate %></p>
-        <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p>
+        <p>Fecha de creación: <%= datosCompany.createDate %></p> <!-- Muestra la fecha de creación -->
+        <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
         
-        <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a><br>
-        <form id="eliminar" action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST">
-            <button>Eliminar</button>
+        <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a><br> <!-- Enlace para edit -->
+        <form id="eliminar" action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar empresa -->
+            <button>Eliminar</button> <!-- Botón para eliminar -->
         </form>
     </fieldset>
 </body>

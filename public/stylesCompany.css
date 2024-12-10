@@ -1,6 +1,16 @@
+
+/*** Cabecera ***/
+
 body{
     background: linear-gradient(0.25turn, #8697e7, #383c63);
 }
+
+h1{
+    text-align: center;
+}
+
+
+/*** Barra de Navegación ***/
 
 #nav{
     width: 95%;
@@ -10,9 +20,7 @@ body{
     
 }
 
-h1{
-    text-align: center;
-}
+
 
 a{
     text-decoration: none;
@@ -24,6 +32,7 @@ a{
     border-radius: 10px;
 }
 
+/*** Formulario ***/
 fieldset{
     border-radius: 10px;
     display: flex;

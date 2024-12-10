@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
     <h1>Crear Nuevo Usuario</h1>
-    <form action="<%= BaseURL %>users" method="POST">
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>users">Inicio</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+    </fieldset><br>
+
+    <form action="<%= BaseURL %>users" method="POST"> <!-- Formulario de actualizacion -->
         <label for="nif">NIF</label>
-        <input type="text" name="nif" required><br>
+        <input type="text" name="nif" required><br> <!-- Campo de NIF -->
         
         <label for="username">Username</label>
-        <input type="text" name="username" required><br>
+        <input type="text" name="username" required><br> <!-- Campo de nombre de usuario -->
         
         <label for="password">Password</label>
-        <input type="password" name="password" required><br>
+        <input type="password" name="password" required><br> <!-- Campo de contraseña -->
         
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName" required><br>
+        <input type="text" name="firstName" required><br> <!-- Campo de nombre -->
         
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" required><br>
+        <input type="text" name="lastName" required><br> <!-- Campo de apellido -->
         
         <label for="email">Email</label>
-        <input type="email" name="email" required><br>
+        <input type="email" name="email" required><br> <!-- Campo de email -->
         
-        <label for="profile">Profile</label>
+        <label for="profile">Profile</label> <!-- Campo de perfil -->
         <select name="profile" id="profile">
             <option value="administrador">Administrador</option>
             <option value="profesor">Profesor</option>
@@ -34,7 +42,7 @@
         </select>
         <br><br>
         <button type="submit">Crear Usuario</button>
-        <a href="<%= BaseURL %>users">Cancelar</a>
+        <a href="<%= BaseURL %>users">Cancelar</a> <!-- Enlace para volver al index -->
     </form>
 </body>
 </html>

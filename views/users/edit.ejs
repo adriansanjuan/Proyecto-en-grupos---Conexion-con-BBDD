@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edición Usuario</title>
+    <base href="/">
+    <link rel="stylesheet" href="stylesCompany.css">
 </head>
 <body>
 <h1>Editar User</h1>
-    <h2>ID: <%= datosUsuario.idUser %></h2>
-    <form action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=PATCH" method="POST">
+    <fieldset id="nav">
+        <a href="<%= BaseURL %>users">Inicio</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+    </fieldset><br>
+
+    <h2>ID: <%= datosUsuario.idUser %></h2>  <!-- Muestra la id del usuario -->
+            <a href="<%= BaseURL %>users/<%= c.idUser %>">Show Details</a> <!-- Campo de NIF -->
+    <form action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=PATCH" method="POST"> <!-- Formulario de edicion -->
         <label for="nif">NIF</label>
-        <input type="text" name="nif" value="<%= datosUsuario.nif %>" required readonly><br>
+        <input type="text" name="nif" value="<%= datosUsuario.nif %>" required readonly><br> <!-- Campo de NIF -->
         
         <label for="username">Username</label>
-        <input type="text" name="username" value="<%= datosUsuario.username %>" required><br>
+        <input type="text" name="username" value="<%= datosUsuario.username %>" required><br> <!-- Campo de nombre de usuario -->
         
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName" value="<%= datosUsuario.firstName %>" required><br>
+        <input type="text" name="firstName" value="<%= datosUsuario.firstName %>" required><br> <!-- Campo de nombre -->
         
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" value="<%= datosUsuario.lastName %>" required><br>
+        <input type="text" name="lastName" value="<%= datosUsuario.lastName %>" required><br> <!-- Campo de apellido -->
         
         <label for="email">Email</label>
-        <input type="email" name="email" value="<%= datosUsuario.email %>" required><br>
+        <input type="email" name="email" value="<%= datosUsuario.email %>" required><br> <!-- Campo de email -->
         
-        <label>Profile: <%= datosUsuario.profile %></label>
+        <label>Profile: <%= datosUsuario.profile %></label> <!-- Tipo de perfil -->
         
         <br><br>
         <button type="submit">Guardar</button>
-        <a href="<%= BaseURL %>users">Cancelar</a>
+        <a href="<%= BaseURL %>users">Cancelar</a> <!-- Enlace para volver al index -->
     </form>
 </body>
 </html>

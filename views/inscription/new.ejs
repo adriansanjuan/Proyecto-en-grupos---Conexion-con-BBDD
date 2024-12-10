@@ -10,33 +10,32 @@
 <body>
     <h1>Página New Inscription</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
-        <a href="<%= BaseURL %>company">Empresas</a>
-        <a href="<%= BaseURL %>users">Usuarios</a>
+        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a> <!-- Enlace para nueva inscripción -->
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace al index de empresas -->
+        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace al index de usuarios -->
     </fieldset><br>
-    <form action="<%= BaseURL %>inscription" method="POST">
+    <form action="<%= BaseURL %>inscription" method="POST"> <!-- Formulario de nueva inscripción -->
         <fieldset>
             <% var fecha = new Date(); %>
             <%var mes = (fecha.getMonth()+1).toString();%>
             <%var dia = (fecha.getDate()).toString(); %>
             <%var anyo = (fecha.getFullYear()).toString(); %>
-            <input type="text" name="FecIni" value=<%= `${anyo}-${mes}-${dia}` %> readonly>
-            <select name="IdCompany" required>
+            <input type="text" name="FecIni" value=<%= `${anyo}-${mes}-${dia}` %> readonly> <!-- Campo de fecha de inicio -->
+            <select name="IdCompany" required> <!-- Campo de empresa -->
                 <option value="">Seleccione una compañía</option>
                 <% companies.forEach(function(company) { %>
                     <option value="<%= company._id %>"><%= company.name %> - <%= company.cif %></option>
                 <% }); %>
             </select>        
-            <select name="IdUser" required>
+            <select name="IdUser" required> <!-- Campo de usuario -->
                 <option value="">Seleccione un usuario</option>
                 <% users.forEach(function(user) { %>
                     <option value="<%= user.idUser %>"><%= user.firstName %> <%= user.lastName %> - <%= user.nif %></option>
                 <% }); %>
             </select>
-            <input type="date" placeholder="Fecha Fin" name="FecFin">
-            <input type="text" placeholder="Observaciones" name="Observaciones">        
-            <br>
-            <br>
+            <input type="date" placeholder="Fecha Fin" name="FecFin"> <!-- Campo de fecha de fin -->
+            <input type="text" placeholder="Observaciones" name="Observaciones"> <!-- Campo de observaciones -->
+            <br><br>
             <button>Guardar</button>
         </fieldset>
     </form>

@@ -11,25 +11,25 @@
     <h1>Página Edit Inscription</h1>
     <fieldset id="nav">
         <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
-        <a href="<%= BaseURL %>company">Empresas</a>
-        <a href="<%= BaseURL %>users">Usuarios</a>
+        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresas -->
+        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset><br>
-    <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=PATCH" method="POST">
+    <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=PATCH" method="POST"> <!-- fprmulario de edicion -->
         <fieldset>
-            <input type="text" placeholder="Fecha Inicio" name="FecIni" value="<%= inscription.FecIni %>" required> 
-            <select name="IdCompany" required>
+            <input type="text" placeholder="Fecha Inicio" name="FecIni" value="<%= inscription.FecIni %>" required> <!-- Campo de fecha inicio -->
+            <select name="IdCompany" required> <!-- Campo de empresa -->
                 <option value="">Editar la compañía</option>
                 <% companies.forEach(function(company) { %>
                     <option value="<%= company._id %>"><%= company.name %> - <%= company.cif %></option>
                 <% }); %>
             </select>        
-            <select name="IdUser" required>
+            <select name="IdUser" required> <!-- Campo de usuario -->
                 <option value="">Editar un usuario</option>
                 <% users.forEach(function(user) { %>
                     <option value="<%= user.idUser %>"><%= user.firstName %> <%= user.lastName %> - <%= user.nif %></option>
                 <% }); %>
-            <input type="date" placeholder="Fecha Fin" name="FecFin" value="<%= inscription.FecFin %>">
-            <input type="text" placeholder="Observaciones" name="Observaciones" value="<%= inscription.Observaciones %>">
+            <input type="date" placeholder="Fecha Fin" name="FecFin" value="<%= inscription.FecFin %>"> <!-- Campo de fecha fin -->
+            <input type="text" placeholder="Observaciones" name="Observaciones" value="<%= inscription.Observaciones %>"> <!-- Campo de observaciones -->
             <button>Guardar</button>
         </fieldset>
     </form>

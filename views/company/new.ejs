@@ -10,43 +10,43 @@
 <body>
     <h1>Nueva Empresa</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>company">Inicio</a>
-        <a href="<%= BaseURL %>inscription">Inscripciones</a>
-        <a href="<%= BaseURL %>users">Usuarios</a>
+        <a href="<%= BaseURL %>company">Inicio</a> <!-- Enlace al index de emprtesas -->
+        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace al index de inscripciones -->
+        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace al index de usuarios -->
     </fieldset>
-    <form action="<%= BaseURL %>company" method="POST">
+    <form action="<%= BaseURL %>company" method="POST"> <!-- Formulario de nueva empresa -->
         <fieldset>
             <legend>Nueva Empresa</legend>
 
             <h3>DATOS GENERALES</h3>
             <label for="cif">CIF: </label>
-            <input type="text" name="cif" required placeholder="12345678"><br>
+            <input type="text" name="cif" required placeholder="12345678"><br> <!-- Campo CIF -->
             <label for="name">Nombre: </label>
-            <input type="text" name="name" placeholder="JTP.apps"><br>
+            <input type="text" name="name" placeholder="JTP.apps"><br> <!-- Campo nombre -->
             <label for="type">Tipo de empresa: </label>
-            <input type="text" name="type" placeholder="FERRETERIA"><br>
+            <input type="text" name="type" placeholder="FERRETERIA"><br> <!-- Campo tipo de empresa -->
 
             <h3>PERSONA A CARGO</h3>
             <label for="personInCharge">Nombre de la persona: </label>
-            <input type="text" name="personInCharge" placeholder="Plácido Jung"><br>
+            <input type="text" name="personInCharge" placeholder="Plácido Jung"><br> <!-- Campo persona a cargo -->
             <label for="personInChargeID">ID de la persona: </label>
-            <input type="text" name="personInChargeID" placeholder="3333333"><br>
+            <input type="text" name="personInChargeID" placeholder="3333333"><br> <!-- Campo id de persona a cargo -->
 
             <h3>LOCALIZACIÓN</h3>
             <label for="city">Ciudad: </label>
-            <input type="text" name="city" placeholder="Alicante"><br>
+            <input type="text" name="city" placeholder="Alicante"><br> <!-- Campo ciudad -->
             <label for="area">Provincia</label>
-            <input type="text" name="area" placeholder="Alicante"><br>
+            <input type="text" name="area" placeholder="Alicante"><br> <!-- Campo area -->
             <label for="postalCode">Código postal: </label>
-            <input type="number" name="postalCode" placeholder="03014"><br>
+            <input type="number" name="postalCode" placeholder="03014"><br> <!-- Campo codigo postal -->
             <label for="address">Dirección: </label>
-            <input type="text" name="address" placeholder="Av. Maisonave, 33"><br>
+            <input type="text" name="address" placeholder="Av. Maisonave, 33"><br> <!-- Campo dirección -->
 
             <h3>CONTACTO</h3>
             <label for="phone">Teléfono: </label>
-            <input type="tel" name="phone" placeholder="633333333"><br>
+            <input type="tel" name="phone" placeholder="633333333"><br> <!-- Campo telefono -->
             <label for="email">Correo electrónico: </label>
-            <input type="email" name="email" placeholder="jtp@gmail.com">
+            <input type="email" name="email" placeholder="jtp@gmail.com"> <!-- Campo email -->
 
             <h3>DATOS DE ACTUALIZACION</h3>
             <% var fecha = new Date(); %>
@@ -54,9 +54,9 @@
             <%var dia = (fecha.getDate()).toString(); %>
             <%var anyo = (fecha.getFullYear()).toString(); %>
             <label for="createDate">Fecha de creación: </label>
-            <input type="text" name="createDate" value=<%= `${anyo}-${mes}-${dia}` %> readonly><br>
+            <input type="text" name="createDate" value=<%= `${anyo}-${mes}-${dia}` %> readonly><br> <!-- Campo fecha inicio -->
             <label for="modifiedDate">Última fecha de modificación: </label>
-            <input type="text" name="modifiedDate" value=<%= `${anyo}-${mes}-${dia}` %> readonly>
+            <input type="text" name="modifiedDate" value=<%= `${anyo}-${mes}-${dia}` %> readonly> <!-- Campo fecha fin -->
             
             <button>Enviar</button><br>
             

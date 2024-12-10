@@ -1,18 +1,17 @@
-const companyModel = require("../../models/company.model")
-const mongodbConfig = require("../mongodb.config")
+const companyModel = require("../../models/company.model")//Importa el modelo de company
+const mongodbConfig = require("../mongodb.config")//Importa la configuración de MongoDB
 
 const ejecutar = async()=>{
     await mongodbConfig.conectarMongoDB()
-    .then(()=>{
-        console.log("Conectado con MongoDB!!!")
+    .then(()=>{//Si conecta con MongoDB
+        console.log("Conectado con MongoDB!!!")//Confirmamos por consola la conexión
     })
-    .catch((err)=>{
-        //Si no conectamos con MongoDB, debemos tumbar el server
-        console.log(`Error al conectar. Desc: ${err}`)
+    .catch((err)=>{//Si no conecta con MongoDB
+        console.log(`Error al conectar. Desc: ${err}`)//Tumba el servidor
         process.exit(0)
     })
 
-    const company =[
+    const company =[//Creamos los objetos de mongo
         {
             cif:"A12345677",
             name:"Sierras Manolo",
@@ -71,4 +70,4 @@ const ejecutar = async()=>{
     process.exit()
 }
 
-ejecutar()
+ejecutar()//Ejecuta la seed
