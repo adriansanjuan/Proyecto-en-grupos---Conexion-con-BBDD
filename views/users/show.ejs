@@ -31,7 +31,7 @@
         
         <a href="<%= BaseURL %>users">Volver</a><br> <!-- Enlace para volver al index -->
         <a href="<%= BaseURL %>users/edit/<%= datosUsuario.idUser %>">Editar</a> <!-- Enlace para edit -->
-        <form id="eliminar" <%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar usuario -->
+        <form id="eliminar" action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar usuario -->
             <button>Eliminar</button> <!-- Botón para eliminar -->
         </form>
     </fieldset>
