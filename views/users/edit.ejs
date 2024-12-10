@@ -16,7 +16,6 @@
     </fieldset><br>
 
     <h2>ID: <%= datosUsuario.idUser %></h2>  <!-- Muestra la id del usuario -->
-    <a id="volver" href="<%= BaseURL %>users/<%= datosUsuario.idUser %>"> Volver </a><br> <!-- Campo de NIF -->
     <form action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=PATCH" method="POST"> <!-- Formulario de edicion -->
         <fieldset>
             <label for="nif">NIF</label>

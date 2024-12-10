@@ -14,7 +14,7 @@
         <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de emprtesa -->
         <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset><br>
-    <div>
+    <div id="body">
 
         <% if(datosInscription && datosInscription.length > 0) { %> <!-- Verifica si hay inscripciones -->
             <% for(let inscription of datosInscription) { %> <!-- Itera sobre las inscripciones -->
@@ -47,7 +47,7 @@
                         </p>
                     </div>
                     
-                    <div>
+                    <div id="boton">
                         <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
                     </div>
                     <form id="eliminar" action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=DELETE" method="POST" > <!-- Formulario para eliminar -->

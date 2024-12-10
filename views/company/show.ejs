@@ -40,9 +40,10 @@
         <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
         
         <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a><br> <!-- Enlace para edit -->
+        <a href="<%= BaseURL %>company">Volver</a><br>
         <form id="eliminar" action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar empresa -->
             <button>Eliminar</button> <!-- Botón para eliminar -->
-        </form>
+        </form><br>
     </fieldset>
 </body>
 </html>
