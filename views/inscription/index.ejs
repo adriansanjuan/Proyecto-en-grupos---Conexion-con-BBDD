@@ -38,8 +38,15 @@
                         <p>Id: <%= inscription._id %></p> <!-- Muestra ID de inscripción -->
                     </div>
                     <div>
-                        <p>Version <%= inscription.__v %></p>
+                        <p>Fecha de Expiración: 
+                            <% if (inscription.FecFin) { %>
+                                <%= inscription.FecFin %>
+                            <% } else { %>
+                                No hay fecha de Expiración
+                            <% } %>
+                        </p>
                     </div>
+                    
                     <div>
                         <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
                     </div>

@@ -20,20 +20,25 @@
             <%var mes = (fecha.getMonth()+1).toString();%>
             <%var dia = (fecha.getDate()).toString(); %>
             <%var anyo = (fecha.getFullYear()).toString(); %>
+            <label for="FecIni">Fecha de Inicio:</label>
             <input type="text" name="FecIni" value=<%= `${anyo}-${mes}-${dia}` %> readonly> <!-- Campo de fecha de inicio -->
+            <label for="IdCompany">Compañía:</label>
             <select name="IdCompany" required> <!-- Campo de empresa -->
                 <option value="">Seleccione una compañía</option>
                 <% companies.forEach(function(company) { %>
                     <option value="<%= company._id %>"><%= company.name %> - <%= company.cif %></option>
                 <% }); %>
             </select>        
+            <label for="IdUser">Usuario:</label>
             <select name="IdUser" required> <!-- Campo de usuario -->
                 <option value="">Seleccione un usuario</option>
                 <% users.forEach(function(user) { %>
                     <option value="<%= user.idUser %>"><%= user.firstName %> <%= user.lastName %> - <%= user.nif %></option>
                 <% }); %>
             </select>
+            <label for="FecFin">Fecha Exp (Opcional):</label>
             <input type="date" placeholder="Fecha Fin" name="FecFin"> <!-- Campo de fecha de fin -->
+            <label for="Observaciones">Observaciones:</label>
             <input type="text" placeholder="Observaciones" name="Observaciones"> <!-- Campo de observaciones -->
             <br><br>
             <button>Guardar</button>
