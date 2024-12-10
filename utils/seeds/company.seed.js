@@ -11,6 +11,11 @@ const ejecutar = async()=>{
         process.exit(0)
     })
 
+    function getFecha(){
+        let fecha = new Date()
+        let stringFecha = `${fecha.getFullYear().toString()}-${(fecha.getMonth()+1).toString()}-${fecha.getDate().toString()}`
+    }
+
     const company =[//Creamos los objetos de mongo
         {
             cif:"A12345677",
@@ -25,7 +30,7 @@ const ejecutar = async()=>{
             phone:666504030,
             email:"manolosierras@sierras.com",
             createDate:"1-10-2024",
-            modifiedDate: new Date()
+            modifiedDate: getFecha()
         },
         {
             cif:"A12345678",
@@ -40,7 +45,7 @@ const ejecutar = async()=>{
             phone:666504031,
             email:"aeronix2@aero.com",
             createDate:"10-10-2024",
-            modifiedDate: new Date()
+            modifiedDate: getFecha()
         },
         {
             cif:"A12345679",
@@ -55,7 +60,7 @@ const ejecutar = async()=>{
             phone:666504032,
             email:"passtasmadrid@passta.com",
             createDate:"3-10-2024",
-            modifiedDate: new Date()
+            modifiedDate: getFecha()
         }
     ]
 
