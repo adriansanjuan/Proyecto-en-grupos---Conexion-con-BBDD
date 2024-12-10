@@ -15,14 +15,14 @@
         <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
     </fieldset><br>
 
-    <a href="<%= BaseURL %>users/new">Crear usuario</a> <!-- Enlace para crear usuario -->
     <% for( let c of datosUsers ) { %> <!-- Bucle para listar los usuarios -->
-        <ul>
-            <li>NIF : <%= c.nif %></li>
-            <li>Username : <%= c.username %></li>
-            <a href="<%= BaseURL %>users/<%= c.idUser %>">Show Details</a>  <!-- Enlace a la pagina de show con el id del usuario -->
-        </ul>
-        <hr>
+        <fieldset>
+            <ul>
+                <li>NIF : <%= c.nif %></li>
+                <li>Username : <%= c.username %></li>
+                <a href="<%= BaseURL %>users/<%= c.idUser %>">Show Details</a>  <!-- Enlace a la pagina de show con el id del usuario -->
+            </ul>
+        </fieldset><br>
     <% } %>
 </body>
 </html>
