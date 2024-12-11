@@ -14,6 +14,7 @@ const ejecutar = async()=>{
     function getFecha(){
         let fecha = new Date()
         let stringFecha = `${fecha.getFullYear().toString()}-${(fecha.getMonth()+1).toString()}-${fecha.getDate().toString()}`
+        return stringFecha;
     }
 
     const company =[//Creamos los objetos de mongo
