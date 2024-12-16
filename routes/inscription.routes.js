@@ -27,11 +27,9 @@ router.get("/CSR",inscriptionController.showAllInscriptionCSR)
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription
-router.get("/CSR/new",inscriptionController.showNewInscriptionCSR)
-router.post("/CSR",inscriptionControllerCSR.createInscriptionCSR)
+router.post("/CSR",inscriptionController.createInscriptionCSR)
 
 //PATCH
-router.get("/CSR/edit/:id", inscriptionController.showEditInscriptionCSR)
 router.patch("/CSR/:id",inscriptionController.editInscriptionCSR)
 
 //DELETE
