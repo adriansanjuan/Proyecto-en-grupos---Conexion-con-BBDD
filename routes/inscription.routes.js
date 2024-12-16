@@ -23,18 +23,18 @@ router.delete("/:id",inscriptionController.deleteInscription)
 //GET
 
 //Mostrar VISTA EJS index.ejs con listado de todo inscription
-router.get("/CSR",inscriptionControllerCSR.showAllInscription)
+router.get("/CSR",inscriptionController.showAllInscriptionCSR)
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription
-router.get("/CSR/new",inscriptionControllerCSR.showNewInscription)
-router.post("/CSR",inscriptionControllerCSR.createInscription)
+router.get("/CSR/new",inscriptionController.showNewInscriptionCSR)
+router.post("/CSR",inscriptionControllerCSR.createInscriptionCSR)
 
 //PATCH
-router.get("/CSR/edit/:id", inscriptionControllerCSR.showEditInscription)
-router.patch("/CSR/:id",inscriptionControllerCSR.editInscription)
+router.get("/CSR/edit/:id", inscriptionController.showEditInscriptionCSR)
+router.patch("/CSR/:id",inscriptionController.editInscriptionCSR)
 
 //DELETE
-router.delete("/CSR/:id",inscriptionControllerCSR.deleteInscription)
+router.delete("/CSR/:id",inscriptionController.deleteInscriptionCSR)
 
 module.exports = router // Exporta el enrutador para su uso en la aplicación principal
