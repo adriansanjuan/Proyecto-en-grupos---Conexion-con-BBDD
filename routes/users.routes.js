@@ -16,10 +16,8 @@ router.delete("/:id",usersController.deleteUserById)
 
 //CSR
 //GET
-router.get("/CSR/new", usersController.newUserJSON)
 router.get("/CSR/:id", usersController.findUserByIdJSON)
 router.get("/CSR", usersController.findAllUsersJSON)
-router.get("/CSR/edit/:id", usersController.modifyUserJSON)
 //POST
 router.post("/CSR",usersController.createUserJSON)
 //PATCH
