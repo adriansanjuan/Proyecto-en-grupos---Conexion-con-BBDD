@@ -14,4 +14,17 @@ router.patch("/:id",usersController.updateUser)
 //DELETE
 router.delete("/:id",usersController.deleteUserById)
 
+//CSR
+//GET
+router.get("/CSR/new", usersControllerJSON.newUser)
+router.get("/CSR/:id", usersControllerJSON.findUserById)
+router.get("/CSR", usersControllerJSON.findAllUsers)
+router.get("/CSR/edit/:id", usersControllerJSON.modifyUser)
+//POST
+router.post("/CSR",usersControllerJSON.createUser)
+//PATCH
+router.patch("/CSR/:id",usersControllerJSON.updateUser)
+//DELETE
+router.delete("/CSR/:id",usersControllerJSON.deleteUserById)
+
 module.exports = router // Exporta el enrutador para su uso en la aplicación principal
