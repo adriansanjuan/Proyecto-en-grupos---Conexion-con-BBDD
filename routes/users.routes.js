@@ -16,7 +16,6 @@ router.delete("/:id",usersController.deleteUserById)
 
 //CSR
 //GET
-router.get("/CSR/new", usersController.UserJSON)
 router.get("/CSR/:id", usersController.findUserByIdJSON)
 router.get("/CSR", usersController.findAllUsersJSON)
 //POST
