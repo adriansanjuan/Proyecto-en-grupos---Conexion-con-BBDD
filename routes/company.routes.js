@@ -18,20 +18,18 @@ router.patch("/:id", companyController.editCompany)
 //DELETE
 router.delete("/:id", companyController.deleteCompany)
 
-//CSR
+//---------CSR---------
 //POST
-router.get("/CSR/new", companyControllerJSON.showNewCompany)
-router.post("/CSR", companyControllerJSON.createCompany)
+router.post("/CSR", companyController.createCompanyJSON)
 
 //GET
-router.get("/CSR", companyControllerJSON.findAllCompanies)
-router.get("/CSR/:id", companyControllerJSON.findAllCompaniesById)
+router.get("/CSR", companyController.findAllCompaniesJSON)
+router.get("/CSR/:id", companyController.findAllCompaniesByIdJSON)
 
 //PATCH
-router.get("/CSR/edit/:id", companyControllerJSON.showEditCompany)
-router.patch("/CSR/:id", companyControllerJSON.editCompany)
+router.patch("/CSR/:id", companyController.editCompanyJSON)
 
 //DELETE
-router.delete("/CSR/:id", companyControllerJSON.deleteCompany)
+router.delete("/CSR/:id", companyController.deleteCompanyJSON)
 
 module.exports = router // Exporta el enrutador para su uso en la aplicación principal
