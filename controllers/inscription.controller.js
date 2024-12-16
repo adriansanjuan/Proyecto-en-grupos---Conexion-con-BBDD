@@ -98,3 +98,57 @@ exports.deleteInscription = async(req,res)=>{//Función para eliminar una inscri
         }
     })    
 }
+
+
+//CSR
+
+exports.findAllInscriptionCSR = async(req,res) => {
+    //CSR
+    await inscriptionModel.findAllInscription({},function(err,datosInscription){
+        if(err){            
+            res.status(500).json({"err":err})
+        }else{
+            res.status(200).json(datosInscription)
+        }
+    })    
+}
+
+exports.createInscriptionCSR = async(req,res)=>{    
+    await inscriptionModel.createInscription(req.body, function(err,inscriptionCreated){
+        if(err){            
+            res.status(400).json(err)
+        }else{            
+            res.status(200).json(inscriptionCreated)
+        }
+    })
+}
+
+exports.editInscriptionCSR = async(req,res) => {
+    const { id } = req.params//Obtiene el ID de los parámetros
+    const { FecIni, FecFin, Observaciones, IdUser, IdCompany } = req.body//Extrae datos del cuerpo
+    const inscriptionActualizado = {//Crea objeto con datos actualizados
+        FecIni,//Fecha inicio
+        FecFin,//Fecha fin
+        Observaciones,//Observaciones
+        IdUser,//ID del usuario
+        IdCompany//ID de la compañía
+    }
+    await inscriptionModel.updateInscriptionById(id,inscriptionActualizado,function(err,datosActualizados){
+        if(err){            
+            res.status(400).json(err)
+        }else{            
+            res.status(200).json(inscriptionActualizado)
+        }
+    })        
+}
+
+exports.deleteInscriptionCSR = async(req,res)=>{
+    const {id} = req.params    
+    await inscriptionModel.deleteInscriptionById(id,function(err,datosEliminados){
+        if(err){
+            res.status(400).json(err)
+        }else{
+            res.status(200).json(datosEliminados)
+        }
+    })    
+}
