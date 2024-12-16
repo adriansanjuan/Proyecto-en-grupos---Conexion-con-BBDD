@@ -5,14 +5,14 @@ let user = function (empleado) { // Constructor de usuario
     //id autoincremental
     this.nif = empleado.nif // NIF
     this.username = empleado.username, // Usuario
-        this.password = empleado.password, // Contraseña
-        this.firstName = empleado.firstName, // Nombre
-        this.lastName = empleado.lastName, // Apellido
-        this.createdDate = empleado.createdDate || new Date(), // Fecha creación
-        this.modifiedDate = new Date(), // Fecha modificación
-        this.email = empleado.email, // Email
-        this.picture = empleado.picture || null, // Foto 
-        this.profile = empleado.profile // Rol
+    this.password = empleado.password, // Contraseña
+    this.firstName = empleado.firstName, // Nombre
+    this.lastName = empleado.lastName, // Apellido
+    this.createdDate = empleado.createdDate || new Date(), // Fecha creación
+    this.modifiedDate = new Date(), // Fecha modificación
+    this.email = empleado.email, // Email
+    this.picture = empleado.picture || null, // Foto 
+    this.profile = empleado.profile // Rol
 }
 
 user.findAll = async (result) => { // Función para obtener todos los usuarios

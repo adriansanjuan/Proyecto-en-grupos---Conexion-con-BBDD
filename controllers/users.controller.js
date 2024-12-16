@@ -95,3 +95,82 @@ exports.deleteUserById = async function(req,res){//Función para eliminar al usu
         }
     })
 }
+
+exports.findAllUsersJSON = async function(req,res) {//Función para mostrar todos los usuarios
+    await userModel.findAll(function(err,datosUsers){//Llama al método del modelo para encontrar todos los usuarios
+        if(err){//Si hay error
+            res.status(404).json(err)
+        }else{//Si no hay error
+            res.status(200).json(datosUsers)
+        }
+    })    
+}
+
+exports.findUserByIdJSON = async function(req,res){//Función para mostrar los usuarios por id
+    const {id} = req.params
+    await userModel.findById(id,function(err,datosUsuario){//Llama al método del modelo para encontrar los usuarios por id
+        if(err){//Si hay error
+            res.status(404).json(err)
+        }else{//Si no hay error
+            res.status(200).json(datosUsuario)
+        }
+    })
+}
+
+exports.createUserJSON = async function(req,res){//Función para crear el nuevo usuario
+    // Crear nuevo objeto usuario con los datos del formulario
+    const newUser = new userModel({
+        nif: req.body.nif,
+        username: req.body.username,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        picture: req.body.picture || null,
+        profile: req.body.profile,
+        createdDate: new Date(),
+        modifiedDate: new Date()
+    })
+
+    await userModel.create(newUser, function(err, datosUsuarioCreado){//Llama al método del modelo para crear los usuarios
+        if(err){//Si hay error
+            console.error("Error al crear usuario:", err);//Muestra el error en consola
+            res.status(400).json(err)
+        } else {//Si no hay error
+            res.status(200).json(datosUsuarioCreado)
+        }
+    })
+}
+
+exports.updateUserJSON = async function(req,res){//Función para actualizar el usuario
+    const {id} = req.params
+    const updateUser = {
+        nif: req.body.nif,
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        profile: req.body.profile,
+        modifiedDate: new Date()
+    }
+    
+    await userModel.update(id,updateUser,function(err,datosUsuarioActualizado){//Llama al método del modelo para actualizar el usuario
+        if(err){//Si hay error
+            res.status(400).json(err)
+        }else{//Si no hay error
+            res.status(200).json(datosUsuarioActualizado)
+        }
+    })
+}
+
+
+exports.deleteUserByIdJSON = async function(req,res){//Función para eliminar al usuario
+    const {id} = req.params
+    await userModel.deleteById(id,function(err,datosUsuario){
+        if(err){//Si hay error
+            res.status(400).json(err)
+        }else{//Si no hay error
+            res.status(200).json(datosUsuario)
+        }
+    })
+}
