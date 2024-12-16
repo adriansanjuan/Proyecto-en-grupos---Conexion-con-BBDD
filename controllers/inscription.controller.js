@@ -102,7 +102,7 @@ exports.deleteInscription = async(req,res)=>{//Función para eliminar una inscri
 
 //CSR
 
-exports.findAllInscriptionCSR = async(req,res) => {
+exports.showAllInscriptionCSR = async(req,res) => {
     //CSR
     await inscriptionModel.findAllInscription({},function(err,datosInscription){
         if(err){            
