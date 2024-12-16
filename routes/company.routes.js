@@ -4,19 +4,19 @@ const company = require("../models/company.model")
 const router = express.Router() // Crea un enrutador para las rutas de company
 
 //POST
-router.get("/new", companyController.showNewCompany)
-router.post("/", companyController.createCompany)
+router.get("/SSR/new", companyController.showNewCompany)
+router.post("/SSR", companyController.createCompany)
 
 //GET
-router.get("/", companyController.findAllCompanies)
-router.get("/:id", companyController.findAllCompaniesById)
+router.get("/SSR", companyController.findAllCompanies)
+router.get("/SSR/:id", companyController.findAllCompaniesById)
 
 //PATCH
-router.get("/edit/:id", companyController.showEditCompany)
-router.patch("/:id", companyController.editCompany)
+router.get("/SSR/edit/:id", companyController.showEditCompany)
+router.patch("/SSR/:id", companyController.editCompany)
 
 //DELETE
-router.delete("/:id", companyController.deleteCompany)
+router.delete("/SSR/:id", companyController.deleteCompany)
 
 //---------CSR---------
 //POST

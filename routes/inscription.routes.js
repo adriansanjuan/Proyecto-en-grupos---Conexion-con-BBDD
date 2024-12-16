@@ -5,19 +5,19 @@ const router = express.Router() // Crea un enrutador para las rutas de inscripti
 //GET
 
 //Mostrar VISTA EJS index.ejs con listado de todo inscription
-router.get("/",inscriptionController.showAllInscription)
+router.get("/SSR",inscriptionController.showAllInscription)
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription
-router.get("/new",inscriptionController.showNewInscription)
-router.post("/",inscriptionController.createInscription)
+router.get("/SSR/new",inscriptionController.showNewInscription)
+router.post("/SSR",inscriptionController.createInscription)
 
 //PATCH
-router.get("/edit/:id", inscriptionController.showEditInscription)
-router.patch("/:id",inscriptionController.editInscription)
+router.get("/SSR/edit/:id", inscriptionController.showEditInscription)
+router.patch("/SSR/:id",inscriptionController.editInscription)
 
 //DELETE
-router.delete("/:id",inscriptionController.deleteInscription)
+router.delete("/SSR/:id",inscriptionController.deleteInscription)
 
 //CSR
 //GET

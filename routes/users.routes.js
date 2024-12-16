@@ -3,16 +3,16 @@ const express = require("express") // Importamos Express
 const router = express.Router() // Crea un enrutador para las rutas de users
 
 //GET
-router.get("/new", usersController.newUser)
-router.get("/:id", usersController.findUserById)
-router.get("/", usersController.findAllUsers)
-router.get("/edit/:id", usersController.modifyUser)
+router.get("/SSR/new", usersController.newUser)
+router.get("/SSR/:id", usersController.findUserById)
+router.get("/SSR", usersController.findAllUsers)
+router.get("/SSR/edit/:id", usersController.modifyUser)
 //POST
-router.post("/",usersController.createUser)
+router.post("/SSR",usersController.createUser)
 //PATCH
-router.patch("/:id",usersController.updateUser)
+router.patch("/SSR/:id",usersController.updateUser)
 //DELETE
-router.delete("/:id",usersController.deleteUserById)
+router.delete("/SSR/:id",usersController.deleteUserById)
 
 //CSR
 //GET
