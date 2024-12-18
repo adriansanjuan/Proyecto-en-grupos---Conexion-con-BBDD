@@ -23,7 +23,7 @@ router.delete("/SSR/:id",inscriptionController.deleteInscription)
 //GET
 
 //Mostrar VISTA EJS index.ejs con listado de todo inscription
-router.get("/CSR",inscriptionController.showAllInscriptionCSR)
+router.get("/CSR",inscriptionController.findAllInscriptionCSR)
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription

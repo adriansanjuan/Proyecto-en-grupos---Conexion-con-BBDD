@@ -42,9 +42,9 @@ Inscription.createInscription = async(inscriptionData, result) => {// Método pa
 Inscription.findAllInscription = async(result)=>{// Método para buscar todas las inscripciones
     const datos = await Inscription.find({})// Busca todas las inscripciones
     if(datos){ //Si hay datos
-        result(null, datos)// Retorna todos los datos encontrados
+        result(null, datos) // Retorna todos los datos encontrados
     }else{ //Si no hay datos
-        result(null, [])// Retorna un array vacío
+        result({"error":"No hay datos"},null)// Retorna un  error si no encuentra
     }
 }
 
