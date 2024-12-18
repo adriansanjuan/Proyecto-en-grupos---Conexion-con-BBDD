@@ -9,6 +9,8 @@ const companyRoutes = require("./routes/company.routes")
 const usersRoutes = require("./routes/users.routes")
 const inscriptionRoutes = require("./routes/inscription.routes")
 const mongodbConfig = require("./utils/mongodb.config")
+const swaggerUI = require('swagger-ui-express')
+const specs = require('./swagger/swagger')
 
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
@@ -28,6 +30,7 @@ app.use((req,res,next) => { // Middleware para definir variables globales accesi
 
 // ********** RUTAS DEL SERVIDOR **********
 
+app.use(`/api-docs`,swaggerUI.serve,swaggerUI.setup(specs)) //Configura las rutas para swagger
 app.use(`/api/${process.env.API}/company`,companyRoutes) // Configura las rutas para company usando la versión especificada en el .env
 app.use(`/api/${process.env.API}/users`,usersRoutes) // Configura las rutas para users usando la versión especificada en el .env
 app.use(`/api/${process.env.API}/inscription`,inscriptionRoutes) // Configura las rutas para inscription usando la versión especificada en el .env
