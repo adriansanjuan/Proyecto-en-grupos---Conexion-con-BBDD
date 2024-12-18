@@ -44,7 +44,7 @@ router.delete("/SSR/:id",inscriptionController.deleteInscription)
  *                              type: object
  *                              $ref: '#/components/schemas/Error'
  */
-router.get("/CSR",inscriptionController.showAllInscriptionCSR)
+router.get("/CSR",inscriptionController.findAllInscriptionCSR)
 
 //POST
 /**
