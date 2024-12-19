@@ -47,7 +47,7 @@ exports.createUser = async function(req,res){//Función para crear el nuevo usua
             console.error("Error al crear usuario:", err);//Muestra el error en consola
             res.render("error.ejs", {err})//Renderiza página de error
         } else {//Si no hay error
-            res.redirect(`/api/${process.env.API}/users/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/users/SSR`)//Redirecciona al listado
         }
     })
 }
@@ -79,7 +79,7 @@ exports.updateUser = async function(req,res){//Función para actualizar el usuar
         if(err){//Si hay error
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
-            res.redirect(`/api/${process.env.API}/users/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/users/SSR`)//Redirecciona al listado
         }
     })
 }
@@ -91,7 +91,7 @@ exports.deleteUserById = async function(req,res){//Función para eliminar al usu
         if(err){//Si hay error
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
-            res.redirect(`/api/${process.env.API}/users/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/users/SSR`)//Redirecciona al listado
         }
     })
 }

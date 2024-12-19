@@ -37,7 +37,7 @@ exports.createCompany = async(req, res) => {//Función que crea la nueva compañ
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
             console.log(companyCreated)//Muestra los datos de la nueva compañía
-            res.redirect(`/api/${process.env.API}/company/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/company/SSRSSR`)//Redirecciona al listado
         }
     })
 }
@@ -74,7 +74,7 @@ exports.editCompany = async(req, res) => {//Función que edita la compañia
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
             console.log(datosActualizados)//Muestra los datos por consola
-            res.redirect(`/api/${process.env.API}/company/${datosActualizados._id}`)//Redirecciona al listado con los datos actualizados
+            res.redirect(`/api/${process.env.API}/company/SSR${datosActualizados._id}`)//Redirecciona al listado con los datos actualizados
         }
     })        
 }

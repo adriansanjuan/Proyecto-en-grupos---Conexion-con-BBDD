@@ -20,10 +20,56 @@ router.patch("/SSR/:id",inscriptionController.editInscription)
 router.delete("/SSR/:id",inscriptionController.deleteInscription)
 
 //CSR
+/**
+ * @swagger
+ * components:
+ *      schemas:
+ *          Inscription:
+ *              type: object
+ *              required:
+ *                  - IdUser
+ *                  - IdCompany
+ *                  - FecIni
+ *                  - FecFin
+ *                  - Observaciones
+ *              properties:
+ *                  IdUser:
+ *                      type: number
+ *                      description: UUID de MySQL autoincremental
+ *                  IdCompany:
+ *                      type: string
+ *                      description: ID de MongoDB automatica
+ *                  FecIni:
+ *                      type: string
+ *                      description: Fecha de inicio
+ *                  FecFin:
+ *                      type: string
+ *                      description: Fecha final
+ *                  Observaciones:
+ *                      type: string
+ *                      description: Observaciones de la inscripcion
+ *          Error:
+ *              type: object
+ *              properties:
+ *                  err:
+ *                      type: string
+ *                      description: Descripción del error
+ *              example:
+ *                  err: No hay datos disponibles
+ *                      
+ */
+
+/**
+ * @swagger
+ * tags:
+ *      name: Inscription
+ *      description: El API de Inscription
+ */
+
 //GET
 /**
  * @swagger
- * /api/v2/inscription:
+ * /api/v2/inscription/CSR:
  *      get:
  *          summary: Devuelve el listado de inscripciones
  *          tags: [Inscription]
@@ -49,7 +95,7 @@ router.get("/CSR",inscriptionController.findAllInscriptionCSR)
 //POST
 /**
  * @swagger
- * /api/v2/inscription:
+ * /api/v2/inscription/CSR:
  *      post:
  *          summary: Crea una nueva inscripción
  *          tags: [Inscripcion]
@@ -81,7 +127,7 @@ router.post("/CSR",inscriptionController.createInscriptionCSR)
 //PATCH
 /**
  * @swagger
- * /api/v2/inscription/{id}:
+ * /api/v2/inscription/CSR/{id}:
  *      patch:
  *          summary: Edita una inscripción existente
  *          tags: [Inscripcion]
@@ -120,7 +166,7 @@ router.patch("/CSR/:id",inscriptionController.editInscriptionCSR)
 //DELETE
 /**
  * @swagger
- * /api/v2/inscription/{id}:
+ * /api/v2/inscription/CSR/{id}:
  *      delete:
  *          summary: Elimina una inscripción
  *          tags: [Inscripcion]

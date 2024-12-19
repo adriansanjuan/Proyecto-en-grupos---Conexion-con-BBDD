@@ -15,10 +15,75 @@ router.patch("/SSR/:id",usersController.updateUser)
 router.delete("/SSR/:id",usersController.deleteUserById)
 
 //CSR
+/**
+ * @swagger
+ * components:
+ *      schemas:
+ *          Users:
+ *              type: object
+ *              required:
+ *                  - username
+ *                  - password
+ *                  - firstName
+ *                  - lastName
+ *                  - createdDate
+ *                  - modifiedDate
+ *                  - email
+ *                  - picture
+ *                  - profile
+ *              properties:
+ *                  Id:
+ *                      type: int
+ *                      description: UUID de MySQL autoincremental
+ *                  username:
+ *                      type: string
+ *                      description: Nombre de usuario
+ *                  password:
+ *                      type: string
+ *                      description: Contraseña del usuario
+ *                  firstName:
+ *                      type: string
+ *                      description: Nombre del usuario
+ *                  lastName:
+ *                      type: string
+ *                      description: Apellido del usuario
+ *                  createdDate:
+ *                      type: string
+ *                      description: Fecha de creacion
+ *                  modifiedDate:
+ *                      type: string
+ *                      description: Fecha modificada
+ *                  email:
+ *                      type: string
+ *                      description: Email del usuario
+ *                  picture:
+ *                      type: string
+ *                      description: Foto del usuario
+ *                  profile:
+ *                      type: string
+ *                      description: Rol de usuario
+ *          Error:
+ *              type: object
+ *              properties:
+ *                  err:
+ *                      type: string
+ *                      description: Descripción del error
+ *              example:
+ *                  err: No hay datos disponibles
+ *                      
+ */
+
+/**
+ * @swagger
+ * tags:
+ *      name: Users
+ *      description: El API de Users
+ */
+
 //GET
 /**
  * @swagger
- * /api/v2/users/{id}:
+ * /api/v2/users/CSR/{id}:
  *      get:
  *          summary: Devuelve un usuario
  *          tags: [Usuarios]
@@ -49,7 +114,7 @@ router.get("/CSR/:id", usersController.findUserByIdJSON)
 
 /**
  * @swagger
- * /api/v2/users:
+ * /api/v2/users/CSR:
  *      get:
  *          summary: Devuelve el listado de usuarios
  *          tags: [Usuarios]
@@ -75,7 +140,7 @@ router.get("/CSR", usersController.findAllUsersJSON)
 //POST
 /**
  * @swagger
- * /api/v2/users:
+ * /api/v2/users/CSR:
  *      post:
  *          summary: Crea un nuevo usuario
  *          tags: [Usuarios]
@@ -107,7 +172,7 @@ router.post("/CSR",usersController.createUserJSON)
 //PATCH
 /**
  * @swagger
- * /api/v2/users/{id}:
+ * /api/v2/users/CSR/{id}:
  *      patch:
  *          summary: Edita un usuario existente
  *          tags: [Usuarios]
@@ -146,7 +211,7 @@ router.patch("/CSR/:id",usersController.updateUserJSON)
 //DELETE
 /**
  * @swagger
- * /api/v2/users/{id}:
+ * /api/v2/users/CSR/{id}:
  *      delete:
  *          summary: Elimina un usuario
  *          tags: [Usuarios]
