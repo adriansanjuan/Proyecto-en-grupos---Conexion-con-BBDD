@@ -10,12 +10,12 @@
 <body>
     <h1>Editar <%= datosCompany.name %></h1> <!-- Muestra -->
     <fieldset id="nav">
-        <a href="<%= BaseURL %>company">Inicio</a> <!-- Enlace a index de emprtesa -->
-        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscription -->
-        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>company/SSR">Inicio</a> <!-- Enlace a index de emprtesa -->
+        <a href="<%= BaseURL %>inscription/SSR">Inscripciones</a> <!-- Enlace a index de inscription -->
+        <a href="<%= BaseURL %>users/SSR">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset><br>
 
-    <form action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=PATCH" method="POST"> <!-- Formulario de edicion -->
+    <form action="<%= BaseURL %>company/SSR/<%= datosCompany._id %>?_method=PATCH" method="POST"> <!-- Formulario de edicion -->
         <fieldset>
 
             <h3>DATOS GENERALES</h3>
@@ -48,7 +48,7 @@
             <input type="hidden" name="modifiedDate" value="<%= `${anyo}-${mes}-${dia}` %>" readonly> <!-- Campo de fecha final -->
             
             <button>Enviar</button><br>
-            <a href="<%= BaseURL %>company/<%= datosCompany._id %>">Cancelar</a>
+            <a href="<%= BaseURL %>company/SSR/<%= datosCompany._id %>">Cancelar</a>
         </fieldset>
     </form>
 </body>

@@ -10,9 +10,9 @@
 <body>
     <h1><%= datosUsuario.username %></h1> <!-- Muestra el nombre de usuario -->
     <fieldset id="nav">
-        <a href="<%= BaseURL %>users">Inicio</a> <!-- Enlace a index de usuarios -->
-        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
-        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+        <a href="<%= BaseURL %>users/SSR">Inicio</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription/SSR">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company/SSR">Empresas</a> <!-- Enlace a index de empresa -->
     </fieldset><br>
 
     <fieldset>
@@ -29,9 +29,9 @@
         <p>Modified Date: <%= datosUsuario.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
         <p>ROL: <%= datosUsuario.profile %></p> <!-- Muestra el rol -->
         
-        <a href="<%= BaseURL %>users">Volver</a><br> <!-- Enlace para volver al index -->
-        <a href="<%= BaseURL %>users/edit/<%= datosUsuario.idUser %>">Editar</a> <!-- Enlace para edit -->
-        <form id="eliminar" action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar usuario -->
+        <a href="<%= BaseURL %>users/SSR">Volver</a><br> <!-- Enlace para volver al index -->
+        <a href="<%= BaseURL %>users/SSR/edit/<%= datosUsuario.idUser %>">Editar</a> <!-- Enlace para edit -->
+        <form id="eliminar" action="<%= BaseURL %>users/SSR/<%= datosUsuario.idUser %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar usuario -->
             <button>Eliminar</button> <!-- Botón para eliminar -->
         </form>
     </fieldset>

@@ -44,9 +44,9 @@ app.get("*",(req,res)=>{
 
 app.listen(port, async()=>{
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api-docs`)
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company`)
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users`)
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription`)
+    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
+    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
+    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription/SSR`)
     try {
         //Una vez levantado el servidor, intentamos conectar con MongoDB
         await mongodbConfig.conectarMongoDB()

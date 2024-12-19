@@ -10,13 +10,13 @@
 <body>
 <h1>Editar User</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>users">Inicio</a> <!-- Enlace a index de usuarios -->
-        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
-        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+        <a href="<%= BaseURL %>users/SSR">Inicio</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription/SSR">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company/SSR">Empresas</a> <!-- Enlace a index de empresa -->
     </fieldset><br>
 
     <h2>ID: <%= datosUsuario.idUser %></h2>  <!-- Muestra la id del usuario -->
-    <form action="<%= BaseURL %>users/<%= datosUsuario.idUser %>?_method=PATCH" method="POST"> <!-- Formulario de edicion -->
+    <form action="<%= BaseURL %>users/SSR/<%= datosUsuario.idUser %>?_method=PATCH" method="POST"> <!-- Formulario de edicion -->
         <fieldset>
             <label for="nif">NIF</label>
             <input type="text" name="nif" value="<%= datosUsuario.nif %>" required readonly><br> <!-- Campo de NIF -->
@@ -37,7 +37,7 @@
             
             <br><br>
             <button type="submit">Guardar</button><br>
-            <a href="<%= BaseURL %>users/<%= datosUsuario.idUser %>">Cancelar</a> <!-- Enlace para volver al index -->
+            <a href="<%= BaseURL %>users/SSR/<%= datosUsuario.idUser %>">Cancelar</a> <!-- Enlace para volver al index -->
         </fieldset>
     </form>
 </body>
