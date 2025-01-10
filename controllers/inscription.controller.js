@@ -8,7 +8,7 @@ exports.createInscription = async(req,res)=>{//Función para crear una nueva ins
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
             console.log(inscriptionCreated)//Muestra la inscripción creada
-            res.redirect(`/api/${process.env.API}/inscription/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/inscription/SSR`)//Redirecciona al listado
         }
     })
 }
@@ -83,7 +83,7 @@ exports.editInscription = async(req,res) => {//Función para editar una inscripc
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
             console.log(datosActualizados)//Muestra datos actualizados
-            res.redirect(`/api/${process.env.API}/inscription/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/inscription/SSR`)//Redirecciona al listado
         }
     })        
 }
@@ -94,7 +94,7 @@ exports.deleteInscription = async(req,res)=>{//Función para eliminar una inscri
         if(err){//Si hay error
             res.render("error.ejs", {err})//Renderiza página de error
         }else{//Si no hay error
-            res.redirect(`/api/${process.env.API}/inscription/`)//Redirecciona al listado
+            res.redirect(`/api/${process.env.API}/inscription/SSR`)//Redirecciona al listado
         }
     })    
 }
@@ -102,9 +102,9 @@ exports.deleteInscription = async(req,res)=>{//Función para eliminar una inscri
 
 //CSR
 
-exports.showAllInscriptionCSR = async(req,res) => {
+exports.findAllInscriptionCSR = async(req,res) => {
     //CSR
-    await inscriptionModel.findAllInscription({},function(err,datosInscription){
+    await inscriptionModel.findAllInscription(async function(err,datosInscription){
         if(err){            
             res.status(500).json({"err":err})
         }else{

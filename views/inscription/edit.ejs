@@ -10,11 +10,11 @@
 <body>
     <h1>Página Edit Inscription</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
-        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresas -->
-        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription/SSR/new">Nueva inscription</a>  <!-- Enlace para nueva inscripción -->
+        <a href="<%= BaseURL %>company/SSR">Empresas</a> <!-- Enlace a index de empresas -->
+        <a href="<%= BaseURL %>users/SSR">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset><br>
-    <form action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=PATCH" method="POST"> <!-- fprmulario de edicion -->
+    <form action="<%= BaseURL %>inscription/SSR/<%= inscription._id %>?_method=PATCH" method="POST"> <!-- fprmulario de edicion -->
         <fieldset>
             <label for="FecIni">Fecha de Inicio:</label>
             <input type="text" placeholder="Fecha Inicio" name="FecIni" value="<%= inscription.FecIni %>" required> <!-- Campo de fecha inicio -->

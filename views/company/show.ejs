@@ -10,9 +10,9 @@
 <body>
     <h1><%= datosCompany.name %></h1><!-- Muestra el nombre de la empresa -->
     <fieldset id="nav">
-        <a href="<%= BaseURL %>company">Inicio</a>
-        <a href="<%= BaseURL %>inscription">Inscripciones</a>
-        <a href="<%= BaseURL %>users">Usuarios</a>
+        <a href="<%= BaseURL %>company/SSR">Inicio</a>
+        <a href="<%= BaseURL %>inscription/SSR">Inscripciones</a>
+        <a href="<%= BaseURL %>users/SSR">Usuarios</a>
     </fieldset><br>
 
     <fieldset>
@@ -39,9 +39,9 @@
         <p>Fecha de creación: <%= datosCompany.createDate %></p> <!-- Muestra la fecha de creación -->
         <p>Fecha de última actualización: <%= datosCompany.modifiedDate %></p> <!-- Muestra la fecha de modificación -->
         
-        <a href="<%= BaseURL %>company/edit/<%= datosCompany._id %>">Editar</a><br> <!-- Enlace para edit -->
-        <a href="<%= BaseURL %>company">Volver</a><br>
-        <form id="eliminar" action="<%= BaseURL %>company/<%= datosCompany._id %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar empresa -->
+        <a href="<%= BaseURL %>company/SSR/edit/<%= datosCompany._id %>">Editar</a><br> <!-- Enlace para edit -->
+        <a href="<%= BaseURL %>company/SSR">Volver</a><br>
+        <form id="eliminar" action="<%= BaseURL %>company/SSR/<%= datosCompany._id %>?_method=DELETE" method="POST"> <!-- Formulario para eliminar empresa -->
             <button>Eliminar</button> <!-- Botón para eliminar -->
         </form><br>
     </fieldset>

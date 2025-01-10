@@ -10,9 +10,9 @@
 <body>
     <h1>Página Inscription</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>inscription/new">Nueva inscription</a> <!-- Enlace para nueva inscripción -->
-        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de emprtesa -->
-        <a href="<%= BaseURL %>users">Usuarios</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription/SSR/new">Nueva inscription</a> <!-- Enlace para nueva inscripción -->
+        <a href="<%= BaseURL %>company/SSR">Empresas</a> <!-- Enlace a index de emprtesa -->
+        <a href="<%= BaseURL %>users/SSR">Usuarios</a> <!-- Enlace a index de usuarios -->
     </fieldset><br>
     <div id="body">
 
@@ -48,9 +48,9 @@
                     </div>
                     
                     <div id="boton">
-                        <a href="<%= BaseURL %>inscription/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
+                        <a href="<%= BaseURL %>inscription/SSR/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
                     </div>
-                    <form id="eliminar" action="<%= BaseURL %>inscription/<%= inscription._id %>?_method=DELETE" method="POST" > <!-- Formulario para eliminar -->
+                    <form id="eliminar" action="<%= BaseURL %>inscription/SSR/<%= inscription._id %>?_method=DELETE" method="POST" > <!-- Formulario para eliminar -->
                         <button type="submit">
                             Eliminar
                         </button>

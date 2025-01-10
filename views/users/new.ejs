@@ -10,12 +10,12 @@
 <body>
     <h1>Crear Nuevo Usuario</h1>
     <fieldset id="nav">
-        <a href="<%= BaseURL %>users">Inicio</a> <!-- Enlace a index de usuarios -->
-        <a href="<%= BaseURL %>inscription">Inscripciones</a> <!-- Enlace a index de inscripcion -->
-        <a href="<%= BaseURL %>company">Empresas</a> <!-- Enlace a index de empresa -->
+        <a href="<%= BaseURL %>users/SSR">Inicio</a> <!-- Enlace a index de usuarios -->
+        <a href="<%= BaseURL %>inscription/SSR">Inscripciones</a> <!-- Enlace a index de inscripcion -->
+        <a href="<%= BaseURL %>company/SSR">Empresas</a> <!-- Enlace a index de empresa -->
     </fieldset><br>
 
-    <form action="<%= BaseURL %>users" method="POST"> <!-- Formulario de actualizacion -->
+    <form action="<%= BaseURL %>users/SSR" method="POST"> <!-- Formulario de actualizacion -->
         <fieldset>
             <label for="nif">NIF</label>
             <input type="text" name="nif" required><br> <!-- Campo de NIF -->
@@ -43,7 +43,7 @@
             </select>
             <br><br>
             <button type="submit">Crear Usuario</button><br>
-            <a href="<%= BaseURL %>users">Cancelar</a> <!-- Enlace para volver al index -->
+            <a href="<%= BaseURL %>users/SSR">Cancelar</a> <!-- Enlace para volver al index -->
         </fieldset>
     </form>
 </body>
