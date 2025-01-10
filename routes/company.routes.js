@@ -224,7 +224,7 @@ router.patch("/CSR/:id", companyController.editCompanyJSON)
 //DELETE
 /**
  * @swagger
- * /api/v2/company/CSR  n /{id}:
+ * /api/v2/company/CSR/{id}:
  *      delete:
  *          summary: Elimina una compañia
  *          tags: [Compañias]
