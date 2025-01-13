@@ -43,6 +43,7 @@ app.get("*",(req,res)=>{
 // ********** INICIAR SERVIDOR **********
 
 app.listen(port, async()=>{
+    const paginas = `${process.env.MENSAJE} http://localhost:${port}/api-docs\n${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR\n${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR\n `
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api-docs`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
