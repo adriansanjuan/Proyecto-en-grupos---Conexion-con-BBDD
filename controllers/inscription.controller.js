@@ -13,16 +13,27 @@ exports.createInscription = async(req,res)=>{//Función para crear una nueva ins
     })
 }
 
-exports.showNewInscription = async(req,res)=>{//Función muestra las nuevas inscripciones
-    const companyModel = require("../models/company.model")//Extrae el contenido del modelo
-    const userModel = require("../models/users.model")//Extrae el contenido del modelo
-    
-    const companies = await companyModel.find({})//Crea la constante con el contenido del companyModel
-    await userModel.findAll(function(err, users) {//Llama al método del modelo para encontrar todos los usuarios
-        if(err) {//Si hay error
-            res.render("error.ejs", {err})//Renderiza página de error
-        } else {//Si no hay error
-            res.render("inscription/new.ejs", { companies, users })//Renderiza el formulario de nueva inscripción
+exports.showNewInscription = async (req, res) => { // Función muestra las nuevas inscripciones
+    const companyModel = require("../models/company.model"); // Extrae el contenido del modelo
+    const userModel = require("../models/users.model"); // Extrae el contenido del modelo
+    const inscriptionModel = require("../models/inscription.model"); // Importa el modelo de inscripción
+
+    const companies = await companyModel.find({}); // Crea la constante con el contenido del companyModel
+    userModel.findAll(async function (err, users) { // Llama al método del modelo para encontrar todos los usuarios
+        if (err) { // Si hay error
+            res.render("error.ejs", { err }); // Renderiza página de error
+        } else { // Si no hay error
+            const inscripciones = await inscriptionModel.find({}); // Obtiene todas las inscripciones existentes
+
+            // Filtra los usuarios para excluir los que ya están inscritos en todas las empresas
+            const usuariosFiltrados = users.filter((user) => {
+                return !inscripciones.some(
+                    (inscription) => inscription.IdUser === user.idUser
+                )
+            })
+
+            // Renderiza la vista con los usuarios filtrados
+            res.render("inscription/new.ejs", { companies, users: usuariosFiltrados });
         }
     })
 }

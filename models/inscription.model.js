@@ -24,6 +24,8 @@ const inscriptionSchema = new mongoose.Schema({// Define el esquema de inscripci
     },
 })
 
+// Índice único para evitar duplicados de IdUser e IdCompany
+inscriptionSchema.index({ IdUser: 1}, { unique: true });
 
 // Crear el modelo a partir del esquema
 const Inscription = mongoose.model("Inscription", inscriptionSchema)// Crea modelo Inscription
