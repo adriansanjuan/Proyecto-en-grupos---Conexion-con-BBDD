@@ -139,7 +139,7 @@ exports.editCompanyJSON = async(req, res) => {//Función que edita la compañia
     const companyActualizado = {
         type: type,
         city: ciudad,
-        adress: direccion,
+        address: direccion,
         area: provincia,
         postalCode: postal,
         phone: tel,
