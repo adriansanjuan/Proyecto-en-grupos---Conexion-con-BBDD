@@ -18,20 +18,6 @@
         <fieldset>
             <label for="FecIni">Fecha de Inicio:</label>
             <input type="text" placeholder="Fecha Inicio" name="FecIni" value="<%= inscription.FecIni %>" required> <!-- Campo de fecha inicio -->
-            <label for="IdCompany">Compañía:</label>
-            <select name="IdCompany" required> <!-- Campo de empresa -->
-                <option value="">Editar la compañía</option>
-                <% companies.forEach(function(company) { %>
-                    <option value="<%= company._id %>"><%= company.name %> - <%= company.cif %></option>
-                <% }); %>
-            </select>        
-            <label for="IdUser">Usuario:</label>
-            <select name="IdUser" required> <!-- Campo de usuario -->
-                <option value="">Editar un usuario</option>
-                <% users.forEach(function(user) { %>
-                    <option value="<%= user.idUser %>"><%= user.firstName %> <%= user.lastName %> - <%= user.nif %></option>
-                <% }); %>
-            </select>
             <label for="FecFin">Fecha Exp (Opcional):</label>
             <input type="date" placeholder="Fecha Fin" name="FecFin" value="<%= inscription.FecFin %>"> <!-- Campo de fecha fin -->
             <label for="Observaciones">Observaciones:</label>
