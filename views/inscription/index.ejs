@@ -46,6 +46,14 @@
                             <% } %>
                         </p>
                     </div>
+                    <div>
+                        <p>Observaciones: 
+                            <% if (inscription.Observaciones) { %>
+                                <%= inscription.Observaciones %>
+                            <%}%> 
+                        </p>
+                    </div>
+
                     
                     <div id="boton">
                         <a href="<%= BaseURL %>inscription/SSR/edit/<%= inscription._id %>">Editar inscription</a> <!-- Enlace para editar -->
