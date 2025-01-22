@@ -28,6 +28,8 @@ app.use((req,res,next) => { // Middleware para definir variables globales accesi
     next()
 })
 
+app.use(morganMW.usingMorgan())
+
 // ********** RUTAS DEL SERVIDOR **********
 
 app.use(`/api-docs`,swaggerUI.serve,swaggerUI.setup(specs)) //Configura las rutas para swagger
