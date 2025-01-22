@@ -14,6 +14,7 @@ const specs = require('./swagger/swagger')
 const logger = require("./utils/logger")
 const errorHandlerMW = require("./middleware/errorHandler.mw")
 const AppError = require("./utils/AppError")
+const morganMW = require("./middlewares/morgan.mw")
 
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
