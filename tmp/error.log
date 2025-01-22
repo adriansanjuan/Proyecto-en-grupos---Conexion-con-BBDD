@@ -16,3 +16,5 @@
 [2025-01-22T19:20:38.965] [ERROR] error - Error Handler(404): Error: Ruta no existente
 [2025-01-22T19:20:39.072] [FATAL] error - Ruta no existente /api/v3/inscription/sadas
 [2025-01-22T19:20:39.073] [ERROR] error - Error Handler(404): Error: Ruta no existente
+[2025-01-22T19:28:32.235] [FATAL] error - Ruta no existente /favicon.ico
+[2025-01-22T19:28:32.236] [ERROR] error - Error Handler(404): Error: Ruta no existente

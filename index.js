@@ -14,7 +14,7 @@ const specs = require('./swagger/swagger')
 const logger = require("./utils/logger")
 const errorHandlerMW = require("./middleware/errorHandler.mw")
 const AppError = require("./utils/AppError")
-const morganMW = require("./middlewares/morgan.mw")
+const morganMW = require("./middleware/morgan.mw")
 
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
@@ -64,7 +64,7 @@ app.listen(port, async()=>{
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription/SSR`)
-    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API_VERSION}/comments`)
+    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API_VERSION}/company`)
     try {
         //Una vez levantado el servidor, intentamos conectar con MongoDB
         await mongodbConfig.conectarMongoDB()
