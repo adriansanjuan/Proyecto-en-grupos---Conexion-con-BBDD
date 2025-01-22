@@ -39,9 +39,9 @@ app.use(`/api/${process.env.API}/users`,usersRoutes) // Configura las rutas para
 app.use(`/api/${process.env.API}/inscription`,inscriptionRoutes) // Configura las rutas para inscription usando la versión especificada en el .env
 
 
-app.get("*",(req,res)=>{
-    res.status(500).json({err:"No existe la ruta"})
-})
+// app.get("*",(req,res)=>{
+//     res.status(500).json({err:"No existe la ruta"})
+// })
 
 //Middleware propio para las rutas no existentes
 app.use((req,res)=>{
