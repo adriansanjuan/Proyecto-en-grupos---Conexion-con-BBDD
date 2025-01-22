@@ -11,7 +11,10 @@ const inscriptionRoutes = require("./routes/inscription.routes")
 const mongodbConfig = require("./utils/mongodb.config")
 const swaggerUI = require('swagger-ui-express')
 const specs = require('./swagger/swagger')
+const logger = require("./utils/logger")
 const errorHandlerMW = require("./middleware/errorHandler.mw")
+const AppError = require("./utils/AppError")
+const morganMW = require("./middleware/morgan.mw")
 
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
@@ -29,6 +32,8 @@ app.use((req,res,next) => { // Middleware para definir variables globales accesi
     next()
 })
 
+app.use(morganMW.usingMorgan())
+
 // ********** RUTAS DEL SERVIDOR **********
 
 app.use(`/api-docs`,swaggerUI.serve,swaggerUI.setup(specs)) //Configura las rutas para swagger
@@ -37,11 +42,19 @@ app.use(`/api/${process.env.API}/users`,usersRoutes) // Configura las rutas para
 app.use(`/api/${process.env.API}/inscription`,inscriptionRoutes) // Configura las rutas para inscription usando la versión especificada en el .env
 
 
-app.get("*",(req,res)=>{
-    res.status(500).json({err:"No existe la ruta"})
+// app.get("*",(req,res)=>{
+//     res.status(500).json({err:"No existe la ruta"})
+// })
+
+//Middleware propio para las rutas no existentes
+app.use((req,res)=>{
+    logger.error.fatal("Ruta no existente " + req.originalUrl)
+    throw new AppError("Ruta no existente", 404) //NOT FOUND
 })
 
+//Gestión de todos los errores (Síncronos y Asíncronos del API)
 app.use(errorHandlerMW.errorHandler)
+
 
 // ********** INICIAR SERVIDOR **********
 
@@ -51,6 +64,7 @@ app.listen(port, async()=>{
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription/SSR`)
+    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API_VERSION}/company`)
     try {
         //Una vez levantado el servidor, intentamos conectar con MongoDB
         await mongodbConfig.conectarMongoDB()

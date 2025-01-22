@@ -1,0 +1,18 @@
+[2025-01-22T19:28:19.078] [INFO] access - Escuchando en... http://localhost:3033/api/undefined/comments
+::1 - GET /api/v3/company/SSR HTTP/1.1 200 6671 - 240.602 ms
+::1 - GET /favicon.ico HTTP/1.1 404 27 - 2.360 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 5.337 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 5.297 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 5.223 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 4.703 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 4.978 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 6.562 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 8.635 ms
+[2025-01-22T19:30:21.436] [INFO] access - Escuchando en... http://localhost:3033/api/undefined/company
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 38.583 ms
+::1 - GET /api/v3/company/SSR HTTP/1.1 304 - - 11.633 ms
+::1 - GET /api/v3/inscription/SSR HTTP/1.1 200 4652 - 228.619 ms
+::1 - GET /api/v3/users/SSR HTTP/1.1 200 3050 - 5.813 ms
+::1 - GET /api/v3/users/SSR HTTP/1.1 304 - - 5.314 ms
+::1 - GET /api/v3/users/SSR HTTP/1.1 304 - - 3.730 ms
+[2025-01-22T19:37:13.465] [INFO] access - Escuchando en... http://localhost:3033/api/undefined/company
