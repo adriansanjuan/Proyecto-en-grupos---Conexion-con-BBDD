@@ -48,6 +48,7 @@ app.listen(port, async()=>{
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
     console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription/SSR`)
+    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API_VERSION}/comments`)
     try {
         //Una vez levantado el servidor, intentamos conectar con MongoDB
         await mongodbConfig.conectarMongoDB()
