@@ -11,6 +11,9 @@ const inscriptionRoutes = require("./routes/inscription.routes")
 const mongodbConfig = require("./utils/mongodb.config")
 const swaggerUI = require('swagger-ui-express')
 const specs = require('./swagger/swagger')
+const logger = require("./utils/logger")
+const errorHandlerMW = require("./middleware/errorHandler.mw")
+const AppError = require("./utils/AppError")
 
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
@@ -39,6 +42,16 @@ app.use(`/api/${process.env.API}/inscription`,inscriptionRoutes) // Configura la
 app.get("*",(req,res)=>{
     res.status(500).json({err:"No existe la ruta"})
 })
+
+//Middleware propio para las rutas no existentes
+app.use((req,res)=>{
+    logger.error.fatal("Ruta no existente " + req.originalUrl)
+    throw new AppError("Ruta no existente", 404) //NOT FOUND
+})
+
+//Gestión de todos los errores (Síncronos y Asíncronos del API)
+app.use(errorHandlerMW.errorHandler)
+
 
 // ********** INICIAR SERVIDOR **********
 
