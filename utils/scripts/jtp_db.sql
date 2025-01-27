@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
   `nif` varchar(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(1000) NOT NULL,
   `firstName` varchar(25) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `createdDate` date NOT NULL,
