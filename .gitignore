@@ -1,3 +1,6 @@
 node_modules
 info.txt
+tmp
 ./tmp
+access.log
+error.log
