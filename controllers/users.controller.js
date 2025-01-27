@@ -1,4 +1,5 @@
 require("dotenv").config()//Importa y configura las variables de entorno
+const bcrypt = require("../utils/bcrypt")
 const userModel = require("../models/users.model")//Importa el modelo de users
 
 exports.findAllUsers = async function(req,res) {//Función para mostrar todos los usuarios
@@ -32,7 +33,7 @@ exports.createUser = async function(req,res){//Función para crear el nuevo usua
     const newUser = new userModel({
         nif: req.body.nif,
         username: req.body.username,
-        password: req.body.password,
+        password: bcrypt.hashPassword(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -170,6 +171,17 @@ exports.deleteUserByIdJSON = async function(req,res){//Función para eliminar al
         if(err){//Si hay error
             res.status(400).json(err)
         }else{//Si no hay error
+            res.status(200).json(datosUsuario)
+        }
+    })
+}
+
+exports.login = async function(req, res){
+    const {id} = req.params
+    await userModel.findById(id, function(err, datosUsuario){
+        if(err){
+            res.status(401).json(err)
+        }else{
             res.status(200).json(datosUsuario)
         }
     })
