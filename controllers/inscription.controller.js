@@ -7,7 +7,7 @@ const AppError = require("../utils/AppError")
 exports.createInscription = wrapAsync(async (req, res, next) => {
     await inscriptionModel.createInscription(req.body, function (err, inscriptionCreated) {
         if (err) {
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         } else {
             console.log(inscriptionCreated)
             res.redirect(`/api/${process.env.API}/inscription/SSR`)
@@ -23,7 +23,7 @@ exports.showNewInscription = wrapAsync(async (req, res, next) => { // Función m
     const companies = await companyModel.find({})
     userModel.findAll(async function (err, users) {
         if (err) {
-            return next(new AppError(err, 404));
+            next(new AppError(err, 404));
         } else {
             const inscripciones = await inscriptionModel.find({});
             const usuariosFiltrados = users.filter((user) => {
@@ -39,7 +39,7 @@ exports.showNewInscription = wrapAsync(async (req, res, next) => { // Función m
 exports.showAllInscription = wrapAsync(async (req, res, next) => {
     await inscriptionModel.findAllInscription(async function (err, datosInscription) {
         if (err) {
-            return next(new AppError(err, 404))
+            next(new AppError(err, 404))
         } else {
             const companyModel = require("../models/company.model")
             const userModel = require("../models/users.model")
@@ -47,7 +47,7 @@ exports.showAllInscription = wrapAsync(async (req, res, next) => {
         
             await userModel.findAll(function (err, users) {
                 if (err) {
-                    return next(new AppError(err, 404))
+                    next(new AppError(err, 404))
                 } else {
                     res.render("inscription/index.ejs", { datosInscription, companies, users });
                 }
@@ -60,14 +60,14 @@ exports.showEditInscription = wrapAsync(async (req, res, next) => {
     const { id } = req.params
     await inscriptionModel.findInscriptionById(id, async function (err, inscription) {
         if (err) {
-            return next(new AppError(err, 404));
+            next(new AppError(err, 404));
         } else {
             const companyModel = require("../models/company.model")
             const userModel = require("../models/users.model")
             const companies = await companyModel.find({})
             await userModel.findAll(function (err, users) {
                 if (err) {
-                    return next(new AppError(err, 404))
+                    next(new AppError(err, 404))
                 } else {
                     res.render("inscription/edit.ejs", { inscription, companies, users });
                 }
@@ -88,7 +88,7 @@ exports.editInscription = wrapAsync(async (req, res, next) => {
     };
     await inscriptionModel.updateInscriptionById(id, inscriptionActualizado, function (err, datosActualizados) {
         if (err) {
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         } else {
             console.log(datosActualizados)
             res.redirect(`/api/${process.env.API}/inscription/SSR`)
@@ -100,7 +100,7 @@ exports.deleteInscription = wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     await inscriptionModel.deleteInscriptionById(id, function (err, datosEliminados) {
         if (err) {
-            return next(new AppError(err, 400));
+            next(new AppError(err, 400));
         } else {
             res.redirect(`/api/${process.env.API}/inscription/SSR`)
         }
@@ -112,7 +112,7 @@ exports.deleteInscription = wrapAsync(async (req, res, next) => {
 exports.findAllInscriptionCSR = wrapAsync(async (req, res, next) => {
     await inscriptionModel.findAllInscription(function (err, datosInscription) {
         if (err) {
-            return next(new AppError(err, 500))
+            next(new AppError(err, 500))
         } else {
             res.status(200).json(datosInscription)
         }
@@ -122,7 +122,7 @@ exports.findAllInscriptionCSR = wrapAsync(async (req, res, next) => {
 exports.createInscriptionCSR = wrapAsync(async (req, res, next) => {
     await inscriptionModel.createInscription(req.body, function (err, inscriptionCreated) {
         if (err) {
-            return next(new AppError(err, 400));
+            next(new AppError(err, 400));
         } else {
             res.status(200).json(inscriptionCreated);
         }
@@ -141,7 +141,7 @@ exports.editInscriptionCSR = wrapAsync(async (req, res, next) => {
     };
     await inscriptionModel.updateInscriptionById(id, inscriptionActualizado, function (err, datosActualizados) {
         if (err) {
-            return next(new AppError(err, 400));
+            next(new AppError(err, 400));
         } else {
             res.status(200).json(inscriptionActualizado);
         }
@@ -152,7 +152,7 @@ exports.deleteInscriptionCSR = wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     await inscriptionModel.deleteInscriptionById(id, function (err, datosEliminados) {
         if (err) {
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         } else {
             res.status(200).json(datosEliminados)
         }
