@@ -8,7 +8,7 @@ const AppError = require("../utils/AppError")
 exports.findAllUsers = wrapAsync(async function(req,res,next) {//Función para mostrar todos los usuarios
     await userModel.findAll(function(err,datosUsers){//Llama al método del modelo para encontrar todos los usuarios
         if(err){//Si hay error
-            return next(new AppError(err, 400))//Renderiza página de error
+            next(new AppError(err, 400))//Renderiza página de error
         }else{//Si no hay error
             res.render(`users/index.ejs`, {datosUsers})//Renderiza la página que muestra todos los usuarios
         }
@@ -19,7 +19,7 @@ exports.findUserById = wrapAsync(async function(req,res){//Función para mostrar
     const {id} = req.params
     await userModel.findById(id,function(err,datosUsuario){//Llama al método del modelo para encontrar los usuarios por id
         if(err){//Si hay error
-            return next(new AppError(err, 400))//Renderiza página de error
+            next(new AppError(err, 400))//Renderiza página de error
         }else{//Si no hay error
             res.render(`users/show.ejs`,{datosUsuario:datosUsuario[0]})//Renderiza la página de usuario por id
         }
@@ -48,7 +48,7 @@ exports.createUser = wrapAsync(async function(req,res){//Función para crear el 
 
     await userModel.create(newUser, function(err, datosUsuarioCreado){//Llama al método del modelo para crear los usuarios
         if(err){//Si hay error
-            return next(new AppError(err, 400))//Renderiza página de error
+            next(new AppError(err, 400))//Renderiza página de error
         } else {//Si no hay error
             res.redirect(`/api/${process.env.API}/users/SSR`)//Redirecciona al listado
         }
@@ -59,7 +59,7 @@ exports.modifyUser = wrapAsync(async function(req,res){//Función para modificar
     const {id} = req.params
     await userModel.findById(id,function(err,datosUsuario){//Llama al método del modelo para encontrar los usuarios por id
         if(err){//Si hay error
-            return next(new AppError(err, 400))//Renderiza página de error
+            next(new AppError(err, 400))//Renderiza página de error
         }else{//Si no hay error
             res.render(`users/edit.ejs`,{datosUsuario:datosUsuario[0]})
         }
@@ -80,7 +80,7 @@ exports.updateUser = wrapAsync(async function(req,res){//Función para actualiza
     
     await userModel.update(id,updateUser,function(err,datosUsuarioActualizado){//Llama al método del modelo para actualizar el usuario
         if(err){//Si hay error
-            return next(new AppError(err, 400))//Renderiza página de error
+            next(new AppError(err, 400))//Renderiza página de error
         }else{//Si no hay error
             res.redirect(`/api/${process.env.API}/users/SSR`)//Redirecciona al listado
         }
@@ -92,7 +92,7 @@ exports.deleteUserById = wrapAsync(async function(req,res){//Función para elimi
     const {id} = req.params
     await userModel.deleteById(id,function(err,datosUsuario){
         if(err){//Si hay error
-            return next(new AppError(err, 400))//Renderiza página de error
+            next(new AppError(err, 400))//Renderiza página de error
         }else{//Si no hay error
             res.redirect(`/api/${process.env.API}/users/SSR`)//Redirecciona al listado
         }
@@ -102,7 +102,7 @@ exports.deleteUserById = wrapAsync(async function(req,res){//Función para elimi
 exports.findAllUsersJSON = wrapAsync(async function(req,res) {//Función para mostrar todos los usuarios
     await userModel.findAll(function(err,datosUsers){//Llama al método del modelo para encontrar todos los usuarios
         if(err){//Si hay error
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         }else{//Si no hay error
             res.status(200).json(datosUsers)
         }
@@ -113,7 +113,7 @@ exports.findUserByIdJSON = wrapAsync(async function(req,res){//Función para mos
     const {id} = req.params
     await userModel.findById(id,function(err,datosUsuario){//Llama al método del modelo para encontrar los usuarios por id
         if(err){//Si hay error
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         }else{//Si no hay error
             res.status(200).json(datosUsuario)
         }
@@ -125,7 +125,7 @@ exports.createUserJSON = wrapAsync(async function(req,res){//Función para crear
     const newUser = new userModel({
         nif: req.body.nif,
         username: req.body.username,
-        password: req.body.password,
+        password: bcrypt.hashPassword(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -138,7 +138,7 @@ exports.createUserJSON = wrapAsync(async function(req,res){//Función para crear
     await userModel.create(newUser, function(err, datosUsuarioCreado){//Llama al método del modelo para crear los usuarios
         if(err){//Si hay error
             console.error("Error al crear usuario:", err);//Muestra el error en consola
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         } else {//Si no hay error
             res.status(200).json(datosUsuarioCreado)
         }
@@ -159,7 +159,7 @@ exports.updateUserJSON = wrapAsync(async function(req,res){//Función para actua
     
     await userModel.update(id,updateUser,function(err,datosUsuarioActualizado){//Llama al método del modelo para actualizar el usuario
         if(err){//Si hay error
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         }else{//Si no hay error
             res.status(200).json(datosUsuarioActualizado)
         }
@@ -171,20 +171,20 @@ exports.deleteUserByIdJSON = wrapAsync(async function(req,res){//Función para e
     const {id} = req.params
     await userModel.deleteById(id,function(err,datosUsuario){
         if(err){//Si hay error
-            return next(new AppError(err, 400))
+            next(new AppError(err, 400))
         }else{//Si no hay error
             res.status(200).json(datosUsuario)
         }
     })
 })
 
-exports.login = async function(req, res){
+exports.login = wrapAsync(async function(req, res){
     const {id} = req.params
     await userModel.findById(id, function(err, datosUsuario){
         if(err){
-            res.status(401).json(err)
+            next(new AppError(err, 401))
         }else{
             res.status(200).json(datosUsuario)
         }
     })
-}
+})
