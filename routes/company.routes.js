@@ -2,21 +2,22 @@ const companyController = require("../controllers/company.controller") // Import
 const express = require("express") // Importamos Express
 const company = require("../models/company.model")
 const router = express.Router() // Crea un enrutador para las rutas de company
+const jwtMW = require("../middleware/jwt.mw")
 
 //POST
-router.get("/SSR/new", companyController.showNewCompany)
-router.post("/SSR", companyController.createCompany)
+router.get("/SSR/new",jwtMW.authenticate, companyController.showNewCompany)
+router.post("/SSR",jwtMW.authenticate, companyController.createCompany)
 
 //GET
-router.get("/SSR", companyController.findAllCompanies)
-router.get("/SSR/:id", companyController.findAllCompaniesById)
+router.get("/SSR",jwtMW.authenticate, companyController.findAllCompanies)
+router.get("/SSR/:id",jwtMW.authenticate, companyController.findAllCompaniesById)
 
 //PATCH
-router.get("/SSR/edit/:id", companyController.showEditCompany)
-router.patch("/SSR/:id", companyController.editCompany)
+router.get("/SSR/edit/:id",jwtMW.authenticate, companyController.showEditCompany)
+router.patch("/SSR/:id",jwtMW.authenticate, companyController.editCompany)
 
 //DELETE
-router.delete("/SSR/:id", companyController.deleteCompany)
+router.delete("/SSR/:id",jwtMW.authenticate, companyController.deleteCompany)
 
 //---------CSR---------
 /**

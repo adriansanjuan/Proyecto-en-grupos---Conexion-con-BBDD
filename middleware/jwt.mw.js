@@ -26,7 +26,7 @@ exports.authenticate = (req,res,next) => {
             }
         })
     }else{
-        next(new AppError("Token no proveída", 401))
+        next(new AppError("Debes iniciar sesión", 401))
     }
 }
 
