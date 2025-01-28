@@ -88,3 +88,55 @@
 [2025-01-27T16:48:08.050] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
 [2025-01-27T16:48:08.050] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
 >>>>>>> AdriDev
+[2025-01-28T20:28:44.231] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:28:44.231] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:28:44.231] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+::1 - GET /api/v3/users/SSR/new HTTP/1.1 304 - - 14.737 ms
+[2025-01-28T20:29:47.353] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:29:47.354] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:29:47.354] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:29:52.530] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:29:52.531] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:29:52.531] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:29:55.838] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:29:55.838] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:29:55.838] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:06.713] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:06.713] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:06.713] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:11.135] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:11.136] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:11.136] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:14.737] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:14.737] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:14.737] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:31.657] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:31.658] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:31.658] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:37.842] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:37.843] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:37.843] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:41.857] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:41.858] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:41.858] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:30:47.253] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:30:47.254] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:30:47.254] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+::1 - GET /api/v3/users/SSR/new HTTP/1.1 304 - - 10.467 ms
+::1 - POST /api/v3/users/SSR HTTP/1.1 400 441 - 64.971 ms
+::1 - GET /api/v3/users/SSR/new HTTP/1.1 304 - - 2.022 ms
+::1 - POST /api/v3/users/SSR HTTP/1.1 302 46 - 8.131 ms
+::1 - GET /api/v3/users/SSR HTTP/1.1 200 2345 - 12.410 ms
+::1 - GET /api/v3/users/SSR/11 HTTP/1.1 200 1871 - 8.277 ms
+[2025-01-28T20:37:09.317] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:37:09.317] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:37:09.317] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:37:10.803] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:37:10.803] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:37:10.803] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:37:18.800] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:37:18.801] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:37:18.801] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-01-28T20:37:21.146] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-01-28T20:37:21.146] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-01-28T20:37:21.146] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
