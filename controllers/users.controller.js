@@ -4,6 +4,7 @@ const userModel = require("../models/users.model")//Importa el modelo de users
 
 const { wrapAsync } = require("../utils/functions")
 const AppError = require("../utils/AppError")
+const jwtMW = require("../middleware/jwt.mw")
 
 exports.findAllUsers = wrapAsync(async function(req,res,next) {//Función para mostrar todos los usuarios
     await userModel.findAll(function(err,datosUsers){//Llama al método del modelo para encontrar todos los usuarios
@@ -188,3 +189,26 @@ exports.login = wrapAsync(async function(req, res){
         }
     })
 })
+
+exports.showLogin = (req, res) => {
+    res.render("users/login.ejs")
+}
+
+exports.showRegister = (req, res) => {
+    res.render("users/new.ejs")
+}
+
+exports.showDataUser = (req, res) => {
+    if (!req.session.userLogued) {
+        return res.status(401).json({ msg: "No autorizado" })
+    }
+    res.render("userData.ejs", {
+        username: req.session.userLogued.data.username,
+        profile: req.session.userLogued.data.profile
+    })
+}
+
+exports.logout = (req, res) => {
+    req.session.destroy()
+    res.status(200).json({ msg: "Sesión cerrada correctamente" })
+}

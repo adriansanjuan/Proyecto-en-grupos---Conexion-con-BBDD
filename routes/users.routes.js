@@ -5,9 +5,11 @@ const jwtMW = require("../middleware/jwt.mw")
 const { requireAdmin, requireUser } = require("../middleware/rutasprotegidas.mw");
 
 //GET
+router.get("/register",usersController.showRegister)
+router.get("/login",usersController.showLogin)
 router.get("/SSR/new", usersController.newUser)
 router.get("/SSR/:id",jwtMW.authenticate, usersController.findUserById)
-router.get("/SSR", requireAdmin, usersController.findAllUsers)
+router.get("/SSR", usersController.findAllUsers)
 router.get("/SSR/edit/:id",jwtMW.authenticate, usersController.modifyUser)
 //POST
 router.post("/SSR",usersController.createUser)
