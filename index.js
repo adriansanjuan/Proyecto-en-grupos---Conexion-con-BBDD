@@ -1,6 +1,8 @@
 require("dotenv").config() // Cargamos variables de entorno desde el archivo .env (npm i dotenv)
 const methodOverride = require("method-override") // Method-override nos permite usar métodos como PUT y DELETE en formularios (npm i method-override)
 const express = require("express") // Express para crear el servidor (npm i express)
+const fs = require("fs")
+const https = require("https")
 const app = express() // Aquí tenemos la instancia del servidor
 const path = require("path") // Tenemos el Path para manejar rutas de archivos (npm i path)
 const port = process.env.PORT || process.env.PUERTO // Configuración del puerto usando variables de entorno
@@ -16,6 +18,17 @@ const errorHandlerMW = require("./middleware/errorHandler.mw")
 const AppError = require("./utils/AppError")
 const morganMW = require("./middleware/morgan.mw")
 
+//Carga de certificados para HTTPS
+let certificado = null
+let key_certificate = null
+let https_server = false
+try {
+    certificado = fs.readFileSync("tls/jtp.crt")
+    key_certificate = fs.readFileSync("tls/jtp.key")
+    https_server = true
+} catch (error) {
+    console.log(error)
+}
 
 // ********** CONFIGURACIONES DEL SERVIDOR **********
 
@@ -58,30 +71,51 @@ app.use(errorHandlerMW.errorHandler)
 
 // ********** INICIAR SERVIDOR **********
 
-app.listen(port, async()=>{
-    const paginas = `${process.env.MENSAJE} http://localhost:${port}/api-docs\n${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR\n${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR\n `
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api-docs`)
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
-    console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription/SSR`)
-    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/company/SSR`)
-    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR`)
-    logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/inscription/SSR`)
-    try {
-        //Una vez levantado el servidor, intentamos conectar con MongoDB
-        await mongodbConfig.conectarMongoDB()
-        .then(()=>{
-            console.log("Conectado con MongoDB!!!")
-        })
-        .catch((err)=>{
+if (https_server) { //se han cargado bien los certificados para https
+    https.createServer({
+        cert:certificado,
+        key:key_certificate
+    },app).listen(port, async () => {
+        console.log(`${process.env.MENSAJE} https://localhost:${port}/api-docs`)
+        console.log(`${process.env.MENSAJE} https://localhost:${port}/api/${process.env.API}/users/SSR/login`)
+        logger.access.info(`${process.env.MENSAJE} https://localhost:${port}/api/${process.env.API}/users/SSR/login`)
+        try {
+            //Una vez levantado el servidor, intentamos conectar con MongoDB
+            await mongodbConfig.conectarMongoDB()
+            .then(()=>{
+                console.log("Conectado con MongoDB!!!")
+            })
+            .catch((err)=>{
+                //Si no conectamos con MongoDB, debemos tumbar el server
+                console.log(`Error al conectar. Desc: ${err}`)
+                process.exit(0)
+            })
+        } catch (error) {
             //Si no conectamos con MongoDB, debemos tumbar el server
-            console.log(`Error al conectar. Desc: ${err}`)
+            console.log(`Error en el server. Desc: ${error}`)
             process.exit(0)
-        })
-    } catch (error) {
-        //Si no conectamos con MongoDB, debemos tumbar el server
-        console.log(`Error en el server. Desc: ${error}`)
-        process.exit(0)
-    }
-})
-
+        }
+    })
+}else{
+    app.listen(port, async()=>{
+        console.log(`${process.env.MENSAJE} http://localhost:${port}/api-docs`)
+        console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR/login`)
+        logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR/login`)
+        try {
+            //Una vez levantado el servidor, intentamos conectar con MongoDB
+            await mongodbConfig.conectarMongoDB()
+            .then(()=>{
+                console.log("Conectado con MongoDB!!!")
+            })
+            .catch((err)=>{
+                //Si no conectamos con MongoDB, debemos tumbar el server
+                console.log(`Error al conectar. Desc: ${err}`)
+                process.exit(0)
+            })
+        } catch (error) {
+            //Si no conectamos con MongoDB, debemos tumbar el server
+            console.log(`Error en el server. Desc: ${error}`)
+            process.exit(0)
+        }
+    })
+}
