@@ -21,7 +21,8 @@ exports.authenticate = (req,res,next) => {
             if(err){
                 next(new AppError("Token inválida",401))
             }else{
-                console.log(decoded)
+                req.user = decoded.userData; // Guardar datos en req.user
+                console.log(req.user)
                 next()
             }
         })

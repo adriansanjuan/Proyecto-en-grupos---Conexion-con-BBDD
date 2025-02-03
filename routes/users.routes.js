@@ -2,15 +2,15 @@ const usersController = require("../controllers/users.controller") // Importa el
 const express = require("express") // Importamos Express
 const router = express.Router() // Crea un enrutador para las rutas de users
 const jwtMW = require("../middleware/jwt.mw")
-
+const { requireAdmin, requireUser } = require("../middleware/rutasprotegidas.mw");
 
 //GET
 router.get("/SSR/new", usersController.newUser)
 router.get("/SSR/:id",jwtMW.authenticate, usersController.findUserById)
-router.get("/SSR",jwtMW.authenticate, usersController.findAllUsers)
+router.get("/SSR", requireAdmin, usersController.findAllUsers)
 router.get("/SSR/edit/:id",jwtMW.authenticate, usersController.modifyUser)
 //POST
-router.post("/SSR",jwtMW.authenticate,usersController.createUser)
+router.post("/SSR",usersController.createUser)
 //PATCH
 router.patch("/SSR/:id",jwtMW.authenticate,usersController.updateUser)
 //DELETE
