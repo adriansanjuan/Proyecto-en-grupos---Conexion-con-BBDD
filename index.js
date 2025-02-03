@@ -17,6 +17,7 @@ const logger = require("./utils/logger")
 const errorHandlerMW = require("./middleware/errorHandler.mw")
 const AppError = require("./utils/AppError")
 const morganMW = require("./middleware/morgan.mw")
+const cors = require("cors")
 
 //Carga de certificados para HTTPS
 let certificado = null
@@ -44,6 +45,23 @@ app.use((req,res,next) => { // Middleware para definir variables globales accesi
     res.locals.BaseURL = `/api/${process.env.API}/`
     next()
 })
+
+/* CORS */
+const blackList = [] 
+
+const corsOptions = {
+    origin:(origin, callback) => {
+        console.log(origin)
+        if(blackList.includes(origin) || !origin){
+            callback(new AppError("No estás autorizado", 403), false)
+        }else{
+            callback(null, true)
+        }
+    },
+    credentials: true
+}
+
+app.use(cors(corsOptions))
 
 app.use(morganMW.usingMorgan())
 

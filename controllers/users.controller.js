@@ -4,6 +4,7 @@ const userModel = require("../models/users.model")//Importa el modelo de users
 
 const { wrapAsync } = require("../utils/functions")
 const AppError = require("../utils/AppError")
+const jwtMW = require("../middleware/jwt.mw")
 
 exports.findAllUsers = wrapAsync(async function(req,res,next) {//Función para mostrar todos los usuarios
     await userModel.findAll(function(err,datosUsers){//Llama al método del modelo para encontrar todos los usuarios
@@ -31,17 +32,19 @@ exports.newUser = function (req,res) {//Función que redirige al formulario
     res.render("users/new.ejs")//Renderiza el formulario de nuevo usuario
 }
 
-exports.createUser = wrapAsync(async function(req,res){//Función para crear el nuevo usuario
+exports.createUser = wrapAsync(async function(req,res, next){//Función para crear el nuevo usuario
     // Crear nuevo objeto usuario con los datos del formulario
+    const userData = req.body
+    userData.password = await bcrypt.hashPassword(userData.password)
     const newUser = new userModel({
-        nif: req.body.nif,
-        username: req.body.username,
-        password: bcrypt.hashPassword(req.body.password),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        picture: req.body.picture || null,
-        profile: req.body.profile,
+        nif: userData.nif,
+        username: userData.username,
+        password: userData.password,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        picture: userData.picture || null,
+        profile: userData.profile,
         createdDate: new Date(),
         modifiedDate: new Date()
     })
@@ -55,7 +58,7 @@ exports.createUser = wrapAsync(async function(req,res){//Función para crear el 
     })
 })
 
-exports.modifyUser = wrapAsync(async function(req,res){//Función para modificar el usuario
+exports.modifyUser = wrapAsync(async function(req,res, next){//Función para modificar el usuario
     const {id} = req.params
     await userModel.findById(id,function(err,datosUsuario){//Llama al método del modelo para encontrar los usuarios por id
         if(err){//Si hay error
@@ -66,7 +69,7 @@ exports.modifyUser = wrapAsync(async function(req,res){//Función para modificar
     })
 })
 
-exports.updateUser = wrapAsync(async function(req,res){//Función para actualizar el usuario
+exports.updateUser = wrapAsync(async function(req,res, next){//Función para actualizar el usuario
     const {id} = req.params
     const updateUser = {
         nif: req.body.nif,
@@ -88,7 +91,7 @@ exports.updateUser = wrapAsync(async function(req,res){//Función para actualiza
 })
 
 
-exports.deleteUserById = wrapAsync(async function(req,res){//Función para eliminar al usuario
+exports.deleteUserById = wrapAsync(async function(req,res, next){//Función para eliminar al usuario
     const {id} = req.params
     await userModel.deleteById(id,function(err,datosUsuario){
         if(err){//Si hay error
@@ -99,7 +102,7 @@ exports.deleteUserById = wrapAsync(async function(req,res){//Función para elimi
     })
 })
 
-exports.findAllUsersJSON = wrapAsync(async function(req,res) {//Función para mostrar todos los usuarios
+exports.findAllUsersJSON = wrapAsync(async function(req,res, next) {//Función para mostrar todos los usuarios
     await userModel.findAll(function(err,datosUsers){//Llama al método del modelo para encontrar todos los usuarios
         if(err){//Si hay error
             next(new AppError(err, 400))
@@ -109,7 +112,7 @@ exports.findAllUsersJSON = wrapAsync(async function(req,res) {//Función para mo
     })    
 })
 
-exports.findUserByIdJSON = wrapAsync(async function(req,res){//Función para mostrar los usuarios por id
+exports.findUserByIdJSON = wrapAsync(async function(req,res, next){//Función para mostrar los usuarios por id
     const {id} = req.params
     await userModel.findById(id,function(err,datosUsuario){//Llama al método del modelo para encontrar los usuarios por id
         if(err){//Si hay error
@@ -120,17 +123,19 @@ exports.findUserByIdJSON = wrapAsync(async function(req,res){//Función para mos
     })
 })
 
-exports.createUserJSON = wrapAsync(async function(req,res){//Función para crear el nuevo usuario
+exports.createUserJSON = wrapAsync(async function(req,res, next){//Función para crear el nuevo usuario
     // Crear nuevo objeto usuario con los datos del formulario
+    const userData = req.body
+    userData.password = await bcrypt.hashPassword(userData.password)
     const newUser = new userModel({
-        nif: req.body.nif,
-        username: req.body.username,
-        password: bcrypt.hashPassword(req.body.password),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        picture: req.body.picture || null,
-        profile: req.body.profile,
+        nif: userData.nif,
+        username: userData.username,
+        password: userData.password,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        picture: userData.picture || null,
+        profile: userData.profile,
         createdDate: new Date(),
         modifiedDate: new Date()
     })
@@ -145,7 +150,7 @@ exports.createUserJSON = wrapAsync(async function(req,res){//Función para crear
     })
 })
 
-exports.updateUserJSON = wrapAsync(async function(req,res){//Función para actualizar el usuario
+exports.updateUserJSON = wrapAsync(async function(req,res, next){//Función para actualizar el usuario
     const {id} = req.params
     const updateUser = {
         nif: req.body.nif,
@@ -167,7 +172,7 @@ exports.updateUserJSON = wrapAsync(async function(req,res){//Función para actua
 })
 
 
-exports.deleteUserByIdJSON = wrapAsync(async function(req,res){//Función para eliminar al usuario
+exports.deleteUserByIdJSON = wrapAsync(async function(req,res, next){//Función para eliminar al usuario
     const {id} = req.params
     await userModel.deleteById(id,function(err,datosUsuario){
         if(err){//Si hay error
@@ -178,7 +183,7 @@ exports.deleteUserByIdJSON = wrapAsync(async function(req,res){//Función para e
     })
 })
 
-exports.login = wrapAsync(async function(req, res){
+exports.login = wrapAsync(async function(req, res, next){
     const {id} = req.params
     await userModel.findById(id, function(err, datosUsuario){
         if(err){
@@ -188,3 +193,26 @@ exports.login = wrapAsync(async function(req, res){
         }
     })
 })
+
+exports.showLogin = (req, res) => {
+    res.render("users/login.ejs")
+}
+
+exports.showRegister = (req, res) => {
+    res.render("users/new.ejs")
+}
+
+exports.showDataUser = (req, res) => {
+    if (!req.session.userLogued) {
+        return res.status(401).json({ msg: "No autorizado" })
+    }
+    res.render("userData.ejs", {
+        username: req.session.userLogued.data.username,
+        profile: req.session.userLogued.data.profile
+    })
+}
+
+exports.logout = (req, res) => {
+    req.session.destroy()
+    res.status(200).json({ msg: "Sesión cerrada correctamente" })
+}
