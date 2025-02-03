@@ -33,15 +33,17 @@ exports.newUser = function (req,res) {//Función que redirige al formulario
 
 exports.createUser = wrapAsync(async function(req,res, next){//Función para crear el nuevo usuario
     // Crear nuevo objeto usuario con los datos del formulario
+    const userData = req.body
+    userData.password = await bcrypt.hashPassword(userData.password)
     const newUser = new userModel({
-        nif: req.body.nif,
-        username: req.body.username,
-        password: bcrypt.hashPassword(req.body.password),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        picture: req.body.picture || null,
-        profile: req.body.profile,
+        nif: userData.nif,
+        username: userData.username,
+        password: userData.password,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        picture: userData.picture || null,
+        profile: userData.profile,
         createdDate: new Date(),
         modifiedDate: new Date()
     })
@@ -123,15 +125,16 @@ exports.findUserByIdJSON = wrapAsync(async function(req,res, next){//Función pa
 exports.createUserJSON = wrapAsync(async function(req,res, next){//Función para crear el nuevo usuario
     // Crear nuevo objeto usuario con los datos del formulario
     const userData = req.body
+    userData.password = await bcrypt.hashPassword(userData.password)
     const newUser = new userModel({
-        nif: req.body.nif,
-        username: req.body.username,
-        password: bcrypt.hashPassword(req.body.password),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        picture: req.body.picture || null,
-        profile: req.body.profile,
+        nif: userData.nif,
+        username: userData.username,
+        password: userData.password,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        picture: userData.picture || null,
+        profile: userData.profile,
         createdDate: new Date(),
         modifiedDate: new Date()
     })
