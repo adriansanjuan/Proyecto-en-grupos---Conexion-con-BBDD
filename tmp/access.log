@@ -81,3 +81,15 @@
 ::1 - GET /api/v3/users/SSR/new HTTP/1.1 304 - - 8.537 ms
 ::1 - POST /api/v3/users/SSR HTTP/1.1 302 46 - 292.349 ms
 ::1 - GET /api/v3/users/SSR HTTP/1.1 200 3359 - 4.527 ms
+[2025-02-03T16:31:16.083] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-02-03T16:31:16.083] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-02-03T16:31:16.083] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+::1 - GET /api/v3/users/SSR HTTP/1.1 401 31 - 6.266 ms
+::1 - GET /favicon.ico HTTP/1.1 404 27 - 0.920 ms
+::1 - GET /api/v3/users/login HTTP/1.1 404 27 - 1.273 ms
+::ffff:127.0.0.1 - GET /api/v3/users HTTP/1.1 404 27 - 0.953 ms
+::ffff:127.0.0.1 - GET /api/v3/users/CSR HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - GET /api/v3/users/CSR HTTP/1.1 - - - - ms
+[2025-02-03T17:25:09.227] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
+[2025-02-03T17:25:09.227] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
+[2025-02-03T17:25:09.227] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
