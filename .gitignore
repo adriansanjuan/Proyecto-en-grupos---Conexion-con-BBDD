@@ -4,3 +4,4 @@ tmp
 ./tmp
 access.log
 error.log
+/tmp
