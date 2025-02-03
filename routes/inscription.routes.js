@@ -1,23 +1,25 @@
 const inscriptionController = require("../controllers/inscription.controller") // Importa el controlador de inscription
 const express = require("express") // Importamos Express
 const router = express.Router() // Crea un enrutador para las rutas de inscription
+const jwtMW = require("../middleware/jwt.mw")
+
 
 //GET
 
 //Mostrar VISTA EJS index.ejs con listado de todo inscription
-router.get("/SSR",inscriptionController.showAllInscription)
+router.get("/SSR",jwtMW.authenticate,inscriptionController.showAllInscription)
 
 //POST
 //Mostrar VISTA EJS new.ejs para crear un inscription
-router.get("/SSR/new",inscriptionController.showNewInscription)
-router.post("/SSR",inscriptionController.createInscription)
+router.get("/SSR/new",jwtMW.authenticate,inscriptionController.showNewInscription)
+router.post("/SSR",jwtMW.authenticate,inscriptionController.createInscription)
 
 //PATCH
-router.get("/SSR/edit/:id", inscriptionController.showEditInscription)
-router.patch("/SSR/:id",inscriptionController.editInscription)
+router.get("/SSR/edit/:id",jwtMW.authenticate,inscriptionController.showEditInscription)
+router.patch("/SSR/:id",jwtMW.authenticate,inscriptionController.editInscription)
 
 //DELETE
-router.delete("/SSR/:id",inscriptionController.deleteInscription)
+router.delete("/SSR/:id",jwtMW.authenticate,inscriptionController.deleteInscription)
 
 //CSR
 /**

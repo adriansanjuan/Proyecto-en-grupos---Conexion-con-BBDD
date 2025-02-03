@@ -1,18 +1,20 @@
 const usersController = require("../controllers/users.controller") // Importa el controlador de users
 const express = require("express") // Importamos Express
 const router = express.Router() // Crea un enrutador para las rutas de users
+const jwtMW = require("../middleware/jwt.mw")
+
 
 //GET
 router.get("/SSR/new", usersController.newUser)
-router.get("/SSR/:id", usersController.findUserById)
-router.get("/SSR", usersController.findAllUsers)
-router.get("/SSR/edit/:id", usersController.modifyUser)
+router.get("/SSR/:id",jwtMW.authenticate, usersController.findUserById)
+router.get("/SSR",jwtMW.authenticate, usersController.findAllUsers)
+router.get("/SSR/edit/:id",jwtMW.authenticate, usersController.modifyUser)
 //POST
-router.post("/SSR",usersController.createUser)
+router.post("/SSR",jwtMW.authenticate,usersController.createUser)
 //PATCH
-router.patch("/SSR/:id",usersController.updateUser)
+router.patch("/SSR/:id",jwtMW.authenticate,usersController.updateUser)
 //DELETE
-router.delete("/SSR/:id",usersController.deleteUserById)
+router.delete("/SSR/:id",jwtMW.authenticate,usersController.deleteUserById)
 
 //CSR
 /**
