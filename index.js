@@ -95,8 +95,8 @@ if (https_server) { //se han cargado bien los certificados para https
         key:key_certificate
     },app).listen(port, async () => {
         console.log(`${process.env.MENSAJE} https://localhost:${port}/api-docs`)
-        console.log(`${process.env.MENSAJE} https://localhost:${port}/api/${process.env.API}/users/SSR/login`)
-        logger.access.info(`${process.env.MENSAJE} https://localhost:${port}/api/${process.env.API}/users/SSR/login`)
+        console.log(`${process.env.MENSAJE} https://localhost:${port}/api/${process.env.API}/users/login`)
+        logger.access.info(`${process.env.MENSAJE} https://localhost:${port}/api/${process.env.API}/users/login`)
         try {
             //Una vez levantado el servidor, intentamos conectar con MongoDB
             await mongodbConfig.conectarMongoDB()
@@ -117,8 +117,8 @@ if (https_server) { //se han cargado bien los certificados para https
 }else{
     app.listen(port, async()=>{
         console.log(`${process.env.MENSAJE} http://localhost:${port}/api-docs`)
-        console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR/login`)
-        logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/SSR/login`)
+        console.log(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/login`)
+        logger.access.info(`${process.env.MENSAJE} http://localhost:${port}/api/${process.env.API}/users/login`)
         try {
             //Una vez levantado el servidor, intentamos conectar con MongoDB
             await mongodbConfig.conectarMongoDB()

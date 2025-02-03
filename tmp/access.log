@@ -93,3 +93,6 @@
 [2025-02-03T17:25:09.227] [INFO] access - Escuchando en... http://localhost:3033/api/v3/company/SSR
 [2025-02-03T17:25:09.227] [INFO] access - Escuchando en... http://localhost:3033/api/v3/users/SSR
 [2025-02-03T17:25:09.227] [INFO] access - Escuchando en... http://localhost:3033/api/v3/inscription/SSR
+[2025-02-03T18:53:27.406] [INFO] access - Escuchando en... https://localhost:3033/api/v4/users/SSR/login
+[2025-02-03T19:00:29.853] [INFO] access - Escuchando en... https://localhost:3033/api/v4/users/SSR/login
+[2025-02-03T19:00:34.605] [INFO] access - Escuchando en... https://localhost:3033/api/v4/users/login

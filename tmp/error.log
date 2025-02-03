@@ -7,3 +7,5 @@
 [2025-02-03T16:31:32.489] [ERROR] error - Error Handler(404): Error: Ruta no existente
 [2025-02-03T16:45:43.318] [FATAL] error - Ruta no existente /api/v3/users
 [2025-02-03T16:45:43.318] [ERROR] error - Error Handler(404): Error: Ruta no existente
+[2025-02-03T18:59:35.603] [ERROR] error - Error Handler(403): Error: No estás autorizado
+[2025-02-03T18:59:35.761] [ERROR] error - Error Handler(403): Error: No estás autorizado
